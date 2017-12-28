@@ -5,9 +5,13 @@
   "dependencies": {
     "axios": "^0.17.1",
     "core-js": "^2.5.3",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2",
     "raf": "^3.4.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-lazy-load": "^3.0.13",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts-ts": "2.8.0",
@@ -15,7 +19,13 @@
     "redux-saga": "^0.16.0",
     "styled-components": "^2.2.4"
   },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,json}": [
+      "prettier --double-quote --write"
+    ]
+  },
   "scripts": {
+    "precommit": "lint-staged",
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",

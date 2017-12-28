@@ -6,12 +6,12 @@ import * as ReactDOM from "react-dom";
 // import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import "./index.css";
-import Hello from "./components/Hello";
 import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 
 ReactDOM.render(
     <BrowserRouter>
-        <Hello name="TypeScript" enthusiasmLevel={10}/>
+        <App/>
     </BrowserRouter>,
     document.getElementById("root") as HTMLElement
 );
