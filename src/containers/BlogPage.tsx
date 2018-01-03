@@ -25,7 +25,7 @@ class BlogPage extends React.Component<PostsProps, PostsState> {
   }
 
   componentDidMount() {
-    localForage.getItem("BWPosts").then((posts) => {
+    localForage.getItem("BWPosts").then(posts => {
       if (posts === null) {
         this.makeRequest();
       } else {
@@ -38,33 +38,36 @@ class BlogPage extends React.Component<PostsProps, PostsState> {
   }
 
   render(): JSX.Element {
-    const {posts, isLoaded} = this.state;
+    const { posts, isLoaded } = this.state;
     return (
-        <StyledPage>
-          {isLoaded ? [...posts].map((post, index) =>
-              <Posts key={index} posts={post}/>
-          ) : <ReactLoading type={"bubbles"} color={"#ccc"}/>}
-        </StyledPage>
+      <StyledPage>
+        {isLoaded ? (
+          [...posts].map((post, index) => <Posts key={index} posts={post} />)
+        ) : (
+          <ReactLoading type={"bubbles"} color={"#ccc"} />
+        )}
+      </StyledPage>
     );
   }
 
   private makeRequest(): void {
     axios.get("https://benweiser.com/wp-json/wp/v2/posts").then(response => {
-      localForage.setItem("BWPosts", response.data.map((key: object) => new Post(key)))
-          .then((posts) => {
-            this.setState({
-              isLoaded: true,
-              posts: posts as Post[]
-            });
+      localForage
+        .setItem("BWPosts", response.data.map((key: object) => new Post(key)))
+        .then(posts => {
+          this.setState({
+            isLoaded: true,
+            posts: posts as Post[]
           });
+        });
     });
   }
 }
 
 const StyledPage = styled.div`
-max-width: 1280px;
-margin: 0 auto;
-padding: 32px 16px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 16px 0;
 `;
 
 export default BlogPage;

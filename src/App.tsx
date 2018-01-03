@@ -16,7 +16,7 @@ class App extends React.Component<AppProps, {}> {
     const { className } = this.props;
     return (
       <div className={className}>
-        <Header/>
+        <Header />
         <main>
           <Route path="/blog" component={BlogPage} />
           <Route path="/test" component={Tests} />
@@ -27,7 +27,7 @@ class App extends React.Component<AppProps, {}> {
 }
 
 const StyledApp = styled(App)`
-font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
 `;
 
 export default StyledApp;

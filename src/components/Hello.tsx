@@ -7,26 +7,25 @@ export interface HelloProps {
   onDecrement?: () => void;
 }
 
-const Hello  = (
-    {
-      name,
-      enthusiasmLevel = 0,
-      onIncrement,
-      onDecrement,
-    }: HelloProps): JSX.Element => {
+const Hello = ({
+  name,
+  enthusiasmLevel = 0,
+  onIncrement,
+  onDecrement
+}: HelloProps): JSX.Element => {
   if (enthusiasmLevel <= 0) {
     throw new Error("You could be a little more enthusiastic");
   }
   // const onIncrement1 = () => { onIncrement(); };
   return (
-      <div className="hello">
-        <div className="greeting">
-          This is your {name}
-          Hello {name + getExclamationMarks(enthusiasmLevel)}
-          <button onClick={onDecrement}>-</button>
-          <button onClick={onIncrement}>+</button>
-        </div>
+    <div className="hello">
+      <div className="greeting">
+        This is your {name}
+        Hello {name + getExclamationMarks(enthusiasmLevel)}
+        <button onClick={onDecrement}>-</button>
+        <button onClick={onIncrement}>+</button>
       </div>
+    </div>
   );
 };
 

@@ -26,8 +26,14 @@ export class Post implements PostItem {
   constructor(obj: any) {
     if (!_.isEmpty(obj)) {
       this.better_featured_image = {
-        source_url: obj.better_featured_image !== null ? obj.better_featured_image.source_url : "",
-        alt_text: obj.better_featured_image !== null ? obj.better_featured_image.alt_text : ""
+        source_url:
+          obj.better_featured_image !== null
+            ? obj.better_featured_image.source_url
+            : "",
+        alt_text:
+          obj.better_featured_image !== null
+            ? obj.better_featured_image.alt_text
+            : ""
       };
       this.id = obj.id;
       this.content = {

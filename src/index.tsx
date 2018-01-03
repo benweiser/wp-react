@@ -19,21 +19,24 @@ export interface CustomWindow extends Window {
   __REDUX_DEVTOOLS_EXTENSION__: () => StoreEnhancer<StoreState>;
 }
 
-export const store = createStore<StoreState>(enthusiasm, {
-      enthusiasmLevel: 1,
-      languageName: "TypeScript",
-    },
-    (window as CustomWindow).__REDUX_DEVTOOLS_EXTENSION__ && (window as CustomWindow).__REDUX_DEVTOOLS_EXTENSION__()
+export const store = createStore<StoreState>(
+  enthusiasm,
+  {
+    enthusiasmLevel: 1,
+    languageName: "TypeScript"
+  },
+  (window as CustomWindow).__REDUX_DEVTOOLS_EXTENSION__ &&
+    (window as CustomWindow).__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 console.log(store.getState());
 
 ReactDOM.render(
-    <Provider store={store}>
+  <Provider store={store}>
     <BrowserRouter>
-      <StyledApp/>
+      <StyledApp />
     </BrowserRouter>
-    </Provider>,
-    document.getElementById("root") as HTMLElement
+  </Provider>,
+  document.getElementById("root") as HTMLElement
 );
 registerServiceWorker();

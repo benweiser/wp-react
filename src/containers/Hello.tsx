@@ -12,9 +12,12 @@ export function mapStateToProps({ enthusiasmLevel, languageName }: StoreState) {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<actions.EnthusiasmAction>) => {
-  const boundActionCreators = bindActionCreators(actions.decrementEnthusiasm, dispatch);
+  const boundActionCreators = bindActionCreators(
+    actions.decrementEnthusiasm,
+    dispatch
+  );
   console.log(boundActionCreators);
-  const allActionProps = {...boundActionCreators, dispatch};
+  const allActionProps = { ...boundActionCreators, dispatch };
   return allActionProps;
 };
 
