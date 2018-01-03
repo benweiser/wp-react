@@ -1,21 +1,33 @@
 import * as React from "react";
 import "./App.css";
-import Header from "./containers/Header";
 import { Route } from "react-router";
 import BlogPage from "./containers/BlogPage";
+import Tests from "./components/Tests";
+import Header from "./containers/Header";
+import "typeface-roboto";
+import styled from "styled-components";
 
-class App extends React.Component {
+interface AppProps {
+  className?: string;
+}
+
+class App extends React.Component<AppProps, {}> {
   render() {
+    const { className } = this.props;
     return (
-      <div className="App">
+      <div className={className}>
         <Header/>
-        <div>
+        <main>
           <Route path="/blog" component={BlogPage} />
-          <Route path="/test" component={Header} />
-        </div>
+          <Route path="/test" component={Tests} />
+        </main>
       </div>
     );
   }
 }
 
-export default App;
+const StyledApp = styled(App)`
+font-family: "Roboto", sans-serif;
+`;
+
+export default StyledApp;

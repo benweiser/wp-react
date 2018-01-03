@@ -1,12 +1,12 @@
 import * as React from "react";
 
-export interface Props {
+export interface LinkProps {
     href: string;
     linkText: string;
     target?: string;
 }
 
-const Link: React.SFC<Props> = ({ href, linkText, target = "_self" }: Props): JSX.Element => {
+const Link: React.SFC<LinkProps> = ({ href, linkText, target = "_self" }: LinkProps): JSX.Element => {
     return (
         <a href={href} target={target}>{linkText}</a>
     );

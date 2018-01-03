@@ -1,4 +1,7 @@
-export class Post {
+import * as _ from "lodash";
+import { PostItem } from "../interfaces/PostItem";
+
+export class Post implements PostItem {
   id: number;
   better_featured_image: {
     source_url: string;
@@ -21,10 +24,10 @@ export class Post {
   link: string;
 
   constructor(obj: any) {
-    if (obj) {
+    if (!_.isEmpty(obj)) {
       this.better_featured_image = {
-        source_url: obj.better_featured_image !== null ? obj.better_featured_image.source_url : null,
-        alt_text: obj.better_featured_image !== null ? obj.better_featured_image.alt_text : null
+        source_url: obj.better_featured_image !== null ? obj.better_featured_image.source_url : "",
+        alt_text: obj.better_featured_image !== null ? obj.better_featured_image.alt_text : ""
       };
       this.id = obj.id;
       this.content = {

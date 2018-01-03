@@ -12,8 +12,16 @@ const Navigation: React.SFC<{}> = (): JSX.Element => {
 };
 
 const StyledNavigation = styled.nav`
+display: flex;
+align-items: center;
   a {
     padding: 16px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #eeeaaa;
+    :hover {
+    color: #fff;
+    }
   }
 `;
 

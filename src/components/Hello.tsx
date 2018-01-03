@@ -1,41 +1,37 @@
 import * as React from "react";
-import Logo from "./Logo";
-import Header from "../containers/Header";
-import { Link } from "react-router-dom";
-import { Route } from "react-router";
-import PostsList from "../containers/PostsList";
 
-export interface Props {
-    name: string;
-    enthusiasmLevel?: number;
+export interface HelloProps {
+  name: string;
+  enthusiasmLevel?: number;
+  onIncrement?: () => void;
+  onDecrement?: () => void;
 }
 
-function Hello ({ name, enthusiasmLevel = 1 }: Props) {
-    if (enthusiasmLevel <= 0) {
-        throw new Error("You could be a little more enthusiastic");
-    }
-
-    return (
-        <div className="hello">
-            <div className="greeting">
-                Hello {name + getExclamationMarks(enthusiasmLevel)}
-            </div>
-            <Logo/>
-            <Header/>
-            <nav>
-                <Link to="/test">Test</Link>
-                <Link to="/blog">Blog</Link>
-            </nav>
-            <div>
-                <Route path="/blog" component={PostsList} />
-                <Route path="/test" component={Header} />
-            </div>
+const Hello  = (
+    {
+      name,
+      enthusiasmLevel = 0,
+      onIncrement,
+      onDecrement,
+    }: HelloProps): JSX.Element => {
+  if (enthusiasmLevel <= 0) {
+    throw new Error("You could be a little more enthusiastic");
+  }
+  // const onIncrement1 = () => { onIncrement(); };
+  return (
+      <div className="hello">
+        <div className="greeting">
+          This is your {name}
+          Hello {name + getExclamationMarks(enthusiasmLevel)}
+          <button onClick={onDecrement}>-</button>
+          <button onClick={onIncrement}>+</button>
         </div>
-    );
-}
+      </div>
+  );
+};
 
 export default Hello;
 
-function getExclamationMarks(numChars: number): string {
-    return Array(numChars + 1).join("!");
-}
+const getExclamationMarks = (numChars: number): string => {
+  return Array(numChars + 1).join("!");
+};
