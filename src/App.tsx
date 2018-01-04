@@ -1,22 +1,33 @@
-import * as React from 'react';
-import './App.css';
+import * as React from "react";
+import "./App.css";
+import { Route } from "react-router";
+import BlogPage from "./containers/BlogPage";
+import Tests from "./components/Tests";
+import Header from "./containers/Header";
+import "typeface-roboto";
+import styled from "styled-components";
 
-const logo = require('./images/logo.svg');
+interface AppProps {
+  className?: string;
+}
 
-class App extends React.Component {
+class App extends React.Component<AppProps, {}> {
   render() {
+    const { className } = this.props;
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+      <div className={className}>
+        <Header />
+        <main>
+          <Route path="/blog" component={BlogPage} />
+          <Route path="/test" component={Tests} />
+        </main>
       </div>
     );
   }
 }
 
-export default App;
+const StyledApp = styled(App)`
+  font-family: "Roboto", sans-serif;
+`;
+
+export default StyledApp;

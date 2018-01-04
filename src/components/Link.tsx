@@ -1,15 +1,21 @@
 import * as React from "react";
 
-export interface Props {
-    href: string;
-    linkText: string;
-    target?: string;
+export interface LinkProps {
+  href: string;
+  linkText: string;
+  target?: string;
 }
 
-function Link({ href, linkText, target = "_self" }: Props) {
-    return (
-        <a href={href} target={target}>{linkText}</a>
-    );
-}
+const Link: React.SFC<LinkProps> = ({
+  href,
+  linkText,
+  target = "_self"
+}: LinkProps): JSX.Element => {
+  return (
+    <a href={href} target={target}>
+      {linkText}
+    </a>
+  );
+};
 
 export default Link;
