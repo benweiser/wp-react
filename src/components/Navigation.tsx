@@ -4,16 +4,24 @@ import styled from "styled-components";
 
 const Navigation: React.SFC<{}> = (): JSX.Element => {
   return (
-      <StyledNavigation>
-        <Link to="/test">Test</Link>
-        <Link to="/blog">Blog</Link>
-      </StyledNavigation>
+    <StyledNavigation>
+      <Link to="/test">Test</Link>
+      <Link to="/blog">Blog</Link>
+    </StyledNavigation>
   );
 };
 
 const StyledNavigation = styled.nav`
+  display: flex;
+  align-items: center;
   a {
     padding: 16px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #eeeaaa;
+    :hover {
+      color: #fff;
+    }
   }
 `;
 

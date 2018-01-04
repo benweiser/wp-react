@@ -5,14 +5,18 @@ const logo = require("../images/logo.png");
 
 const Logo: React.SFC<{}> = (): JSX.Element => {
   return (
-      <Image src={logo} alt="My Logo"/>
+    <div>
+      <StyledImage src={logo} alt="My Logo" />
+      <span>Ben Weiser</span>
+    </div>
   );
 };
 
-const Image = styled.img`
-    border-radius: 100px;
-    padding: 4px;
-    border: 1px solid #ccc;
+const StyledImage = styled.img`
+  border-radius: 100px;
+  max-width: 75px;
+  padding: 4px;
+  border: 1px solid #ccc;
 `;
 
 export default Logo;
