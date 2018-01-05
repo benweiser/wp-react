@@ -1,9 +1,10 @@
 import { StoreState } from "../@types/redux-store/index";
 import { DECREMENT_ENTHUSIASM, INCREMENT_ENTHUSIASM } from "../constants/index";
 import { EnthusiasmAction } from "../actions/index";
+import { initialState } from "../index";
 
-export const enthusiasm = (
-  state: StoreState,
+export const enthusiasmReducer = (
+  state: StoreState = initialState,
   action: EnthusiasmAction
 ): StoreState => {
   switch (action.type) {
@@ -17,4 +18,8 @@ export const enthusiasm = (
     default:
       return state;
   }
+};
+
+export const rootReducer = {
+  enthusiasmReducer: enthusiasmReducer,
 };

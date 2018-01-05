@@ -23,7 +23,7 @@ export class Post implements PostItem {
   };
   link: string;
 
-  constructor(obj: any) {
+  constructor(obj: PostItem) {
     if (!_.isEmpty(obj)) {
       this.better_featured_image = {
         source_url:
@@ -44,7 +44,9 @@ export class Post implements PostItem {
       this.date_gmt = obj.date_gmt;
       this.modified = obj.modified;
       this.modified_gmt = obj.modified_gmt;
-      this.title = obj.title;
+      this.title = {
+        rendered: _.unescape(obj.title.rendered)
+      };
       this.excerpt = obj.excerpt;
       this.link = obj.link;
     }

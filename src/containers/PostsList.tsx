@@ -1,6 +1,7 @@
 import * as React from "react";
 import axios from "axios";
 import Post from "../models/Post";
+import { PostItem } from "../interfaces/PostItem";
 
 interface PostsProps {
     id: number;
@@ -34,7 +35,7 @@ class PostsList extends React.Component<PostsProps, PostsState> {
             .then(response => {
                 this.setState({
                     isLoaded: true,
-                    posts: response.data.map((key: object) => new Post(key))
+                    posts: response.data.map((key: PostItem) => new Post(key))
                 });
             })
             .then(response => {
