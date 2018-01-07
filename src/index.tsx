@@ -8,7 +8,6 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { default as StyledApp } from "./App";
 import { applyMiddleware, compose, createStore, StoreEnhancer } from "redux";
-import { StoreState } from "./@types/redux-store/index";
 import { rootReducer } from "./reducers/index";
 import { Provider } from "react-redux";
 import storage from "redux-persist/es/storage";
@@ -16,16 +15,17 @@ import { persistCombineReducers, persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/es/integration/react";
 import { createLogger } from "redux-logger";
 import { PersistConfig } from "redux-persist/es/types";
+import { RootStoreState } from "./stores/RootStoreState";
 
 const registerObserver = require("react-perf-devtool");
 registerObserver();
 
 export interface CustomWindow extends Window {
-  __REDUX_DEVTOOLS_EXTENSION__: () => StoreEnhancer<StoreState>;
+  __REDUX_DEVTOOLS_EXTENSION__: () => StoreEnhancer<RootStoreState>;
 }
 
 /*
-export const store = createStore<StoreState>(
+export const store = createStore<RootState>(
   enthusiasm,
   {
     enthusiasmLevel: 1,
@@ -38,9 +38,11 @@ export const store = createStore<StoreState>(
 
 const middleware = applyMiddleware(createLogger());
 
-export const initialState: StoreState = {
-  enthusiasmLevel: 2,
-  languageName: "Java"
+export const initialState: RootStoreState = {
+  enthusiasmReducer: {
+    enthusiasmLevel: 2,
+    languageName: "Java"
+  }
 };
 
 const config: PersistConfig = {
@@ -51,32 +53,30 @@ const config: PersistConfig = {
 const reducer = persistCombineReducers(config, rootReducer);
 
 const store = createStore(
-    // reducer
-    reducer,
-    initialState as any,
-    compose(middleware)
+  reducer,
+  undefined,
+  // initialState,
+  compose(middleware)
 );
 
 const persistor = persistStore(store);
 
-console.log(store.getState());
+// console.log(store.getState());
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
-const unsubscribe = store.subscribe(() =>
-    console.log(store.getState())
-);
+// const unsubscribe = store.subscribe(() => console.log(store.getState()));
 
 ReactDOM.render(
-    <PersistGate persistor={persistor}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <StyledApp/>
-        </BrowserRouter>
-      </Provider>
-    </PersistGate>,
-    document.getElementById("root") as HTMLElement
+  <PersistGate persistor={persistor}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <StyledApp />
+      </BrowserRouter>
+    </Provider>
+  </PersistGate>,
+  document.getElementById("root") as HTMLElement
 );
 registerServiceWorker();
 
-unsubscribe();
+// unsubscribe();
