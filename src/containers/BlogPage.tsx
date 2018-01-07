@@ -5,6 +5,7 @@ import Posts from "../components/Posts";
 import styled from "styled-components";
 import ReactLoading from "react-loading";
 import * as localForage from "localforage";
+import { PostItem } from "../interfaces/PostItem";
 
 interface PostsProps {
   id: number;
@@ -53,7 +54,7 @@ class BlogPage extends React.Component<PostsProps, PostsState> {
   private makeRequest(): void {
     axios.get("https://benweiser.com/wp-json/wp/v2/posts").then(response => {
       localForage
-        .setItem("BWPosts", response.data.map((key: object) => new Post(key)))
+        .setItem("BWPosts", response.data.map((key: PostItem) => new Post(key)))
         .then(posts => {
           this.setState({
             isLoaded: true,

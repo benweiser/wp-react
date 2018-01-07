@@ -1,11 +1,11 @@
-import { StoreState } from "../@types/redux-store/index";
 import { DECREMENT_ENTHUSIASM, INCREMENT_ENTHUSIASM } from "../constants/index";
 import { EnthusiasmAction } from "../actions/index";
+import { EnthusiasmState } from "../stores/EnthusiasmState";
 
-export const enthusiasm = (
-  state: StoreState,
+export const enthusiasmReducer = (
+  state: EnthusiasmState = { languageName: "Typescript", enthusiasmLevel: 2 },
   action: EnthusiasmAction
-): StoreState => {
+): EnthusiasmState => {
   switch (action.type) {
     case INCREMENT_ENTHUSIASM:
       return { ...state, enthusiasmLevel: state.enthusiasmLevel + 1 };
@@ -17,4 +17,8 @@ export const enthusiasm = (
     default:
       return state;
   }
+};
+
+export const rootReducer = {
+  enthusiasmReducer,
 };
