@@ -8,24 +8,24 @@ export interface HelloProps {
 }
 
 const Hello = ({
-                 languageName,
-                 enthusiasmLevel = 1,
-                 onIncrement,
-                 onDecrement
-               }: HelloProps) => {
+  languageName,
+  enthusiasmLevel = 1,
+  onIncrement,
+  onDecrement
+}: HelloProps) => {
   if (enthusiasmLevel <= 0) {
     throw new Error("You could be a little more enthusiastic");
   }
 
   return (
-      <div className="hello">
-        <div className="greeting">
-          This is your {languageName}
-          Hello {languageName + getExclamationMarks(enthusiasmLevel)}
-          <button onClick={onDecrement}>-</button>
-          <button onClick={onIncrement}>+</button>
-        </div>
+    <div className="hello">
+      <div className="greeting">
+        This is your {languageName}
+        Hello {languageName + getExclamationMarks(enthusiasmLevel)}
+        <button onClick={onDecrement}>-</button>
+        <button onClick={onIncrement}>+</button>
       </div>
+    </div>
   );
 };
 
