@@ -20,5 +20,5 @@ export const enthusiasmReducer = (
 };
 
 export const rootReducer = {
-  enthusiasmReducer,
+  enthusiasmReducer
 };
