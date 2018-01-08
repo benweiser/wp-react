@@ -5,9 +5,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import registerServiceWorker from "./registerServiceWorker";
 import "./index.css";
-import { BrowserRouter } from "react-router-dom";
 import { default as StyledApp } from "./App";
-import { applyMiddleware, compose, createStore } from "redux";
+import { applyMiddleware, compose, createStore, StoreEnhancer } from "redux";
 import { rootReducer } from "./reducers/index";
 import { Provider } from "react-redux";
 import storage from "redux-persist/es/storage";
@@ -21,6 +20,10 @@ import { composeWithDevTools } from "redux-devtools-extension";
 if (process.env.NODE_ENV !== "production") {
   const registerObserver = require("react-perf-devtool");
   registerObserver();
+}
+
+export interface CustomWindow extends Window {
+  __REDUX_DEVTOOLS_EXTENSION__: () => StoreEnhancer<RootStoreState>;
 }
 
 /*
@@ -74,9 +77,7 @@ const persistor = configureStore().persistor;
 ReactDOM.render(
   <PersistGate persistor={persistor}>
     <Provider store={store}>
-      <BrowserRouter>
         <StyledApp />
-      </BrowserRouter>
     </Provider>
   </PersistGate>,
   document.getElementById("root") as HTMLElement

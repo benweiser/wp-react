@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Logo from "./components/Logo";
 import FourOhFour from "./components/404";
 import asyncComponent from "./components/AsyncComponent";
+import { BrowserRouter } from "react-router-dom";
 
 interface AppProps {
   className?: string;
@@ -19,6 +20,7 @@ class App extends React.Component<AppProps, {}> {
   render() {
     const { className } = this.props;
     return (
+        <BrowserRouter>
       <div className={className}>
         <Header />
         <main>
@@ -30,6 +32,7 @@ class App extends React.Component<AppProps, {}> {
           </Switch>
         </main>
       </div>
+        </BrowserRouter>
     );
   }
 }

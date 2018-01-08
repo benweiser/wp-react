@@ -35,7 +35,7 @@
     "precommit": "lint-staged",
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
+    "test": "react-scripts-ts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {

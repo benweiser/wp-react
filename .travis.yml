@@ -1,0 +1,19 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - "lts/*"
+
+notifications:
+  email:
+    on_success: change # only if status change from fail to success
+    on_failure: always # if there is a fail
+    receipents:
+      - bweiser86@gmail.com
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - yarn install
