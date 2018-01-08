@@ -6,6 +6,7 @@ import Tests from "./components/Tests";
 import Header from "./containers/Header";
 import "typeface-roboto";
 import styled from "styled-components";
+import { BrowserRouter } from "react-router-dom";
 
 interface AppProps {
   className?: string;
@@ -13,15 +14,17 @@ interface AppProps {
 
 class App extends React.Component<AppProps, {}> {
   render() {
-    const { className } = this.props;
+    const {className} = this.props;
     return (
-      <div className={className}>
-        <Header />
-        <main>
-          <Route path="/blog" component={BlogPage} />
-          <Route path="/test" component={Tests} />
-        </main>
-      </div>
+        <BrowserRouter>
+          <div className={className}>
+            <Header/>
+            <main>
+              <Route path="/blog" component={BlogPage}/>
+              <Route path="/test" component={Tests}/>
+            </main>
+          </div>
+        </BrowserRouter>
     );
   }
 }

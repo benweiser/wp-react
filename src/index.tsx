@@ -1,11 +1,10 @@
+import "raf/polyfill";
 import "core-js/es6/map";
 import "core-js/es6/set";
-import "raf/polyfill";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import registerServiceWorker from "./registerServiceWorker";
 import "./index.css";
-import { BrowserRouter } from "react-router-dom";
 import { default as StyledApp } from "./App";
 import { applyMiddleware, compose, createStore, StoreEnhancer } from "redux";
 import { rootReducer } from "./reducers/index";
@@ -53,10 +52,10 @@ const config: PersistConfig = {
 const reducer = persistCombineReducers(config, rootReducer);
 
 const store = createStore(
-  reducer,
-  undefined,
-  // initialState,
-  compose(middleware)
+    reducer,
+    undefined,
+    // initialState,
+    compose(middleware)
 );
 
 const persistor = persistStore(store);
@@ -68,14 +67,12 @@ const persistor = persistStore(store);
 // const unsubscribe = store.subscribe(() => console.log(store.getState()));
 
 ReactDOM.render(
-  <PersistGate persistor={persistor}>
-    <Provider store={store}>
-      <BrowserRouter>
-        <StyledApp />
-      </BrowserRouter>
-    </Provider>
-  </PersistGate>,
-  document.getElementById("root") as HTMLElement
+    <PersistGate persistor={persistor}>
+      <Provider store={store}>
+        <StyledApp/>
+      </Provider>
+    </PersistGate>,
+    document.getElementById("root") as HTMLElement
 );
 registerServiceWorker();
 
