@@ -53,12 +53,10 @@ const reducer = persistCombineReducers(config, rootReducer);
 
 const configureStore = () => {
   const store = createStore(
-      reducer,
-      undefined,
-      // initialState,
-      composeWithDevTools(
-          compose(middleware)
-      )
+    reducer,
+    undefined,
+    // initialState,
+    composeWithDevTools(compose(middleware))
   );
   const persistor = persistStore(store);
   return { persistor, store };
@@ -74,14 +72,14 @@ const store = configureStore().store;
 const persistor = configureStore().persistor;
 
 ReactDOM.render(
-    <PersistGate persistor={persistor}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <StyledApp/>
-        </BrowserRouter>
-      </Provider>
-    </PersistGate>,
-    document.getElementById("root") as HTMLElement
+  <PersistGate persistor={persistor}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <StyledApp />
+      </BrowserRouter>
+    </Provider>
+  </PersistGate>,
+  document.getElementById("root") as HTMLElement
 );
 registerServiceWorker();
 

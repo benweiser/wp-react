@@ -38,7 +38,7 @@ const getExclamationMarks = (numChars: number): string => {
 };
 
 const StyledButton = styled.button`
-padding: 8px 16px;
-cursor: pointer;
-width: 120px;
+  padding: 8px 16px;
+  cursor: pointer;
+  width: 120px;
 `;
