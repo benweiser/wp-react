@@ -7,7 +7,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { default as StyledApp } from "./App";
-import { applyMiddleware, compose, createStore, StoreEnhancer } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import { rootReducer } from "./reducers/index";
 import { Provider } from "react-redux";
 import storage from "redux-persist/es/storage";
@@ -16,12 +16,11 @@ import { PersistGate } from "redux-persist/es/integration/react";
 import { createLogger } from "redux-logger";
 import { PersistConfig } from "redux-persist/es/types";
 import { RootStoreState } from "./stores/RootStoreState";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-const registerObserver = require("react-perf-devtool");
-registerObserver();
-
-export interface CustomWindow extends Window {
-  __REDUX_DEVTOOLS_EXTENSION__: () => StoreEnhancer<RootStoreState>;
+if (process.env.NODE_ENV !== "production") {
+  const registerObserver = require("react-perf-devtool");
+  registerObserver();
 }
 
 /*
@@ -52,14 +51,18 @@ const config: PersistConfig = {
 
 const reducer = persistCombineReducers(config, rootReducer);
 
-const store = createStore(
-  reducer,
-  undefined,
-  // initialState,
-  compose(middleware)
-);
-
-const persistor = persistStore(store);
+const configureStore = () => {
+  const store = createStore(
+      reducer,
+      undefined,
+      // initialState,
+      composeWithDevTools(
+          compose(middleware)
+      )
+  );
+  const persistor = persistStore(store);
+  return { persistor, store };
+};
 
 // console.log(store.getState());
 
@@ -67,15 +70,18 @@ const persistor = persistStore(store);
 // Note that subscribe() returns a function for unregistering the listener
 // const unsubscribe = store.subscribe(() => console.log(store.getState()));
 
+const store = configureStore().store;
+const persistor = configureStore().persistor;
+
 ReactDOM.render(
-  <PersistGate persistor={persistor}>
-    <Provider store={store}>
-      <BrowserRouter>
-        <StyledApp />
-      </BrowserRouter>
-    </Provider>
-  </PersistGate>,
-  document.getElementById("root") as HTMLElement
+    <PersistGate persistor={persistor}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <StyledApp/>
+        </BrowserRouter>
+      </Provider>
+    </PersistGate>,
+    document.getElementById("root") as HTMLElement
 );
 registerServiceWorker();
 

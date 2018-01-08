@@ -1,4 +1,5 @@
 import * as React from "react";
+import styled from "styled-components";
 
 export interface HelloProps {
   languageName: string;
@@ -19,12 +20,13 @@ const Hello = ({
 
   return (
     <div className="hello">
-      <div className="greeting">
-        This is your {languageName}
-        Hello {languageName + getExclamationMarks(enthusiasmLevel)}
-        <button onClick={onDecrement}>-</button>
-        <button onClick={onIncrement}>+</button>
+      <div>
+        <StyledButton onClick={onDecrement}>-</StyledButton>
+        <StyledButton onClick={onIncrement}>+</StyledButton>
       </div>
+      <h2 className="greeting">
+        Hello {languageName + getExclamationMarks(enthusiasmLevel)}
+      </h2>
     </div>
   );
 };
@@ -34,3 +36,9 @@ export default Hello;
 const getExclamationMarks = (numChars: number): string => {
   return Array(numChars + 1).join("!");
 };
+
+const StyledButton = styled.button`
+padding: 8px 16px;
+cursor: pointer;
+width: 120px;
+`;
