@@ -13,26 +13,28 @@ interface AppProps {
   className?: string;
 }
 
-const AsyncBlogPage = asyncComponent(() => import("./containers/BlogPage/BlogPage"));
+const AsyncBlogPage = asyncComponent(() =>
+  import("./containers/BlogPage/BlogPage")
+);
 const AsyncTests = asyncComponent(() => import("./components/Tests"));
 
 class App extends React.Component<AppProps, {}> {
   render() {
-    const {className} = this.props;
+    const { className } = this.props;
     return (
-        <BrowserRouter>
-          <div className={className}>
-            <Header/>
-            <main>
-              <Switch>
-                <Route exact={true} path="/" component={Logo}/>
-                <Route path="/blog" component={AsyncBlogPage}/>
-                <Route path="/test" component={AsyncTests}/>
-                <Route component={NotFoundPage}/>
-              </Switch>
-            </main>
-          </div>
-        </BrowserRouter>
+      <BrowserRouter>
+        <div className={className}>
+          <Header />
+          <main>
+            <Switch>
+              <Route exact={true} path="/" component={Logo} />
+              <Route path="/blog" component={AsyncBlogPage} />
+              <Route path="/test" component={AsyncTests} />
+              <Route component={NotFoundPage} />
+            </Switch>
+          </main>
+        </div>
+      </BrowserRouter>
     );
   }
 }

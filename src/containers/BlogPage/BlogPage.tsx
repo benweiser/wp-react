@@ -7,8 +7,7 @@ import ReactLoading from "react-loading";
 import * as localForage from "localforage";
 import { PostItem } from "../../interfaces/PostItem";
 
-interface PostsProps {
-}
+interface PostsProps {}
 
 export interface PostsState {
   isLoaded: boolean;
