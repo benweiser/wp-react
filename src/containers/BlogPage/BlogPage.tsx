@@ -1,15 +1,13 @@
 import * as React from "react";
 import axios from "axios";
-import Post from "../models/Post";
-import Posts from "../components/Posts";
+import Post from "../../models/Post";
+import Posts from "../../components/Posts";
 import styled from "styled-components";
 import ReactLoading from "react-loading";
 import * as localForage from "localforage";
-import { PostItem } from "../interfaces/PostItem";
+import { PostItem } from "../../interfaces/PostItem";
 
-interface PostsProps {
-  id: number;
-}
+interface PostsProps {}
 
 export interface PostsState {
   isLoaded: boolean;

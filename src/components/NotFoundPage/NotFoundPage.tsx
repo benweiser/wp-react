@@ -1,10 +1,10 @@
 import * as React from "react";
 
-export interface Four04Props {
+export interface NotFoundPageProps {
   location: string;
 }
 
-const FourOhFour: React.SFC<Four04Props> = (): JSX.Element => {
+const NotFoundPage: React.SFC<NotFoundPageProps> = (): JSX.Element => {
   return (
     <div>
       <h1>This page could not be found. No match for {location.pathname}</h1>
@@ -12,4 +12,4 @@ const FourOhFour: React.SFC<Four04Props> = (): JSX.Element => {
   );
 };
 
-export default FourOhFour;
+export default NotFoundPage;

@@ -9,7 +9,10 @@ interface AsyncComponentState {
 }
 
 export default function asyncComponent(importComponent: () => any) {
-  class AsyncComponent extends React.Component<AsyncComponentProps, AsyncComponentState> {
+  class AsyncComponent extends React.Component<
+    AsyncComponentProps,
+    AsyncComponentState
+  > {
     constructor(props: AsyncComponentProps) {
       super(props);
 
@@ -19,7 +22,7 @@ export default function asyncComponent(importComponent: () => any) {
     }
 
     async componentDidMount() {
-      const {default: component} = await importComponent();
+      const { default: component } = await importComponent();
       this.setState({
         component
       });

@@ -2,7 +2,6 @@ import * as React from "react";
 import LazyLoad from "react-lazyload";
 import Img from "react-image";
 import ReactLoading from "react-loading";
-import styled from "styled-components";
 
 export interface ImageProps {
   alt: string;
@@ -16,7 +15,7 @@ const Image: React.SFC<ImageProps> = ({
   src
 }: ImageProps): JSX.Element => {
   return (
-    <StyledImage>
+    <div>
       <LazyLoad offset={100} height={200} once={true}>
         <Img
           className={className}
@@ -25,19 +24,8 @@ const Image: React.SFC<ImageProps> = ({
           loader={<ReactLoading type={"bubbles"} color={"#ccc"} />}
         />
       </LazyLoad>
-    </StyledImage>
+    </div>
   );
 };
-
-const StyledImage = styled.div`
-/*  padding-bottom: 100%;
-  position: relative;
-  height: 0;
-  > img {
-    position: absolute;
-    top: 0;
-    left: 0;*/
-  }
-`;
 
 export default Image;
