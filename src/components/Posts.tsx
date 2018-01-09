@@ -2,7 +2,7 @@ import * as React from "react";
 import Post from "../models/Post";
 import styled from "styled-components";
 import Image from "./Image";
-import Link from "./Link";
+import Link from "./Link/Link";
 
 export interface Props {
   posts: Post;

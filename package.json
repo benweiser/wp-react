@@ -35,12 +35,20 @@
     "precommit": "lint-staged",
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill",
+    "test": "react-scripts-ts test --env=jsdom --setupFiles=raf/polyfill --setupTestFrameworkScriptFile=./setupTests.ts",
     "eject": "react-scripts-ts eject"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "devDependencies": {
     "@types/core-js": "^0.9.43",
-    "@types/jest": "^21.1.8",
+    "@types/enzyme": "^3.1.6",
+    "@types/enzyme-adapter-react-16": "^1.0.1",
+    "@types/enzyme-to-json": "^1.5.0",
+    "@types/jest": "^22.0.1",
     "@types/lodash": "^4.14.91",
     "@types/node": "^8.5.2",
     "@types/react": "^16.0.30",
@@ -55,6 +63,10 @@
     "@types/redux-logger": "^3.0.5",
     "@types/redux-persist": "^4.3.1",
     "@types/redux-saga": "^0.10.5",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.0",
+    "jest-serializer-enzyme": "^1.0.0",
     "react-perf-devtool": "^3.0.2",
     "redux-devtools": "^3.4.1",
     "redux-devtools-extension": "^2.13.2",
