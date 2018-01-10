@@ -4,13 +4,13 @@ import styled from "styled-components";
 import Image from "./Image";
 import Link from "./Link/Link";
 
-export interface Props {
+interface PostsProps {
   posts: Post;
 }
 
-const Posts: React.SFC<Props> = ({ posts }: Props): JSX.Element => {
+const Posts: React.SFC<PostsProps> = ({ posts }: PostsProps): JSX.Element => {
   const { title, excerpt, better_featured_image, link } = posts;
-  console.log("posts", posts);
+  // console.log("posts", posts);
   return (
     <StyledPost>
       <StyledThumbnail

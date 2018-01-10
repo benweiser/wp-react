@@ -15,7 +15,7 @@ import { PersistGate } from "redux-persist/es/integration/react";
 import { createLogger } from "redux-logger";
 import { PersistConfig } from "redux-persist/es/types";
 import { RootStoreState } from "./stores/RootStoreState";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 
 if (process.env.NODE_ENV !== "production") {
   const registerObserver = require("react-perf-devtool");
@@ -56,13 +56,13 @@ const reducer = persistCombineReducers(config, rootReducer);
 
 const configureStore = () => {
   const store = createStore(
-    reducer,
-    undefined,
-    // initialState,
-    composeWithDevTools(compose(middleware))
+      reducer,
+      undefined,
+      // initialState,
+      composeWithDevTools(compose(middleware))
   );
   const persistor = persistStore(store);
-  return { persistor, store };
+  return {persistor, store};
 };
 
 // console.log(store.getState());
@@ -75,12 +75,12 @@ const store = configureStore().store;
 const persistor = configureStore().persistor;
 
 ReactDOM.render(
-  <PersistGate persistor={persistor}>
-    <Provider store={store}>
-        <StyledApp />
-    </Provider>
-  </PersistGate>,
-  document.getElementById("root") as HTMLElement
+    <PersistGate persistor={persistor}>
+      <Provider store={store}>
+        <StyledApp/>
+      </Provider>
+    </PersistGate>,
+    document.getElementById("root") as HTMLElement
 );
 registerServiceWorker();
 
