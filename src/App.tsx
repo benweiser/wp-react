@@ -23,33 +23,37 @@ const LoadingComponent = (): JSX.Element => <div>Loading...</div>;
 const AsyncComponent = (opts: AsyncLoader) => {
   return Loadable({
     loader: () => null,
-    loading: () => <LoadingComponent/>,
+    loading: () => <LoadingComponent />,
     delay: 200, // .2 secs
     timeout: 10000, // 10 secs
     ...opts
   });
 };
 
-const AsyncBlogPage = AsyncComponent({ loader: () => import("./containers/BlogPage/BlogPage")});
-const AsyncTests = AsyncComponent({ loader: () => import("./components/Tests")});
+const AsyncBlogPage = AsyncComponent({
+  loader: () => import("./containers/BlogPage/BlogPage")
+});
+const AsyncTests = AsyncComponent({
+  loader: () => import("./components/Tests")
+});
 
 class App extends React.Component<AppProps, {}> {
   render() {
-    const {className} = this.props;
+    const { className } = this.props;
     return (
-        <BrowserRouter>
-          <div className={className}>
-            <Header/>
-            <main>
-              <Switch>
-                <Route exact={true} path="/" component={Logo}/>
-                <Route path="/blog" component={AsyncBlogPage}/>
-                <Route path="/test" component={AsyncTests}/>
-                <Route component={NotFoundPage}/>
-              </Switch>
-            </main>
-          </div>
-        </BrowserRouter>
+      <BrowserRouter>
+        <div className={className}>
+          <Header />
+          <main>
+            <Switch>
+              <Route exact={true} path="/" component={Logo} />
+              <Route path="/blog" component={AsyncBlogPage} />
+              <Route path="/test" component={AsyncTests} />
+              <Route component={NotFoundPage} />
+            </Switch>
+          </main>
+        </div>
+      </BrowserRouter>
     );
   }
 }
