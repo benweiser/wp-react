@@ -1,3 +1,4 @@
+// Deprecated use react loadable
 import * as React from "react";
 
 interface AsyncComponentProps {
