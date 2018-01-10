@@ -7,7 +7,8 @@ import styled from "styled-components";
 import Logo from "./components/Logo";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import { BrowserRouter } from "react-router-dom";
-import Loadable from "react-loadable";
+//import * as Loadable from "react-loadable";
+const Loadable = require("react-loadable");
 
 interface AppProps {
   className?: string;
