@@ -7,19 +7,23 @@ import styled from "styled-components";
 import Logo from "./components/Logo";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import { BrowserRouter } from "react-router-dom";
-//import * as Loadable from "react-loadable";
+// import * as Loadable from "react-loadable";
 const Loadable = require("react-loadable");
 
 interface AppProps {
   className?: string;
 }
 
+interface AsyncLoader {
+  loader: () => Promise<{}>;
+}
+
 const LoadingComponent = (): JSX.Element => <div>Loading...</div>;
 
-const AsyncComponent = (opts: any) => {
+const AsyncComponent = (opts: AsyncLoader) => {
   return Loadable({
     loader: () => null,
-    loading: () => LoadingComponent,
+    loading: () => <LoadingComponent/>,
     delay: 200, // .2 secs
     timeout: 10000, // 10 secs
     ...opts
