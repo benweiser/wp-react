@@ -8,7 +8,11 @@ export interface DecrementEnthusiasm {
   type: constants.DECREMENT_ENTHUSIASM;
 }
 
-export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm;
+export interface IncrementAsync {
+  type: constants.ASYNC_INCREMENT_ENTHUSIASM;
+}
+
+export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm | IncrementAsync;
 
 export const incrementEnthusiasm = (): IncrementEnthusiasm => {
   return {
@@ -19,5 +23,11 @@ export const incrementEnthusiasm = (): IncrementEnthusiasm => {
 export const decrementEnthusiasm = (): DecrementEnthusiasm => {
   return {
     type: constants.DECREMENT_ENTHUSIASM
+  };
+};
+
+export const asyncIncrement = (): IncrementAsync => {
+  return {
+    type: constants.ASYNC_INCREMENT_ENTHUSIASM
   };
 };

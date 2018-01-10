@@ -18,7 +18,8 @@ const mapStateToProps = (state: RootStoreState) => state.enthusiasmReducer;
 const mapDispatchToProps = (dispatch: Dispatch<actions.EnthusiasmAction>) => {
   return {
     onIncrement: () => dispatch(actions.incrementEnthusiasm()),
-    onDecrement: () => dispatch(actions.decrementEnthusiasm())
+    onDecrement: () => dispatch(actions.decrementEnthusiasm()),
+    onIncrementAsync: () => dispatch(actions.asyncIncrement())
   };
 };
 

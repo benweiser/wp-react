@@ -1,4 +1,4 @@
-import { DECREMENT_ENTHUSIASM, INCREMENT_ENTHUSIASM } from "../constants/index";
+import { ASYNC_INCREMENT_ENTHUSIASM, DECREMENT_ENTHUSIASM, INCREMENT_ENTHUSIASM } from "../constants/index";
 import { EnthusiasmAction } from "../actions/index";
 import { EnthusiasmState } from "../stores/EnthusiasmState";
 
@@ -7,6 +7,8 @@ export const enthusiasmReducer = (
   action: EnthusiasmAction
 ): EnthusiasmState => {
   switch (action.type) {
+    case ASYNC_INCREMENT_ENTHUSIASM:
+      return { ...state, enthusiasmLevel: state.enthusiasmLevel + 10 };
     case INCREMENT_ENTHUSIASM:
       return { ...state, enthusiasmLevel: state.enthusiasmLevel + 1 };
     case DECREMENT_ENTHUSIASM:
