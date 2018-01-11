@@ -5,7 +5,7 @@ const Tests: React.SFC<{}> = (): JSX.Element => {
   return (
     <div>
       <Hello />
-      Hello there. This is some content.{" "}
+      Hello theressss. This is some content.{" "}
     </div>
   );
 };

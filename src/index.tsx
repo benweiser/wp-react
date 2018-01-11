@@ -16,6 +16,8 @@ import { createLogger } from "redux-logger";
 import { PersistConfig } from "redux-persist/es/types";
 import { RootStoreState } from "./stores/RootStoreState";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+import createSagaMiddleware from "redux-saga";
+import { default as rootSaga } from "./sagas/index";
 
 if (process.env.NODE_ENV !== "production") {
   const registerObserver = require("react-perf-devtool");
@@ -37,9 +39,6 @@ export const store = createStore<RootState>(
     (window as CustomWindow).__REDUX_DEVTOOLS_EXTENSION__()
 );
 */
-
-const middleware = applyMiddleware(createLogger());
-
 export const initialState: RootStoreState = {
   enthusiasmReducer: {
     enthusiasmLevel: 2,
@@ -54,16 +53,24 @@ const config: PersistConfig = {
 
 const reducer = persistCombineReducers(config, rootReducer);
 
-const configureStore = () => {
-  const store = createStore(
+const sagaMiddleware = createSagaMiddleware();
+
+const middleware = applyMiddleware(
+    sagaMiddleware,
+    createLogger()
+);
+
+const store = createStore(
     reducer,
     undefined,
     // initialState,
     composeWithDevTools(compose(middleware))
-  );
-  const persistor = persistStore(store);
-  return { persistor, store };
-};
+);
+const persistor = persistStore(store);
+
+sagaMiddleware.run(rootSaga);
+
+// const action = (type: any) => configureStore().store.dispatch({type});
 
 // console.log(store.getState());
 
@@ -71,16 +78,13 @@ const configureStore = () => {
 // Note that subscribe() returns a function for unregistering the listener
 // const unsubscribe = store.subscribe(() => console.log(store.getState()));
 
-const store = configureStore().store;
-const persistor = configureStore().persistor;
-
 ReactDOM.render(
-  <PersistGate persistor={persistor}>
-    <Provider store={store}>
-      <StyledApp />
-    </Provider>
-  </PersistGate>,
-  document.getElementById("root") as HTMLElement
+    <PersistGate persistor={persistor}>
+      <Provider store={store}>
+        <StyledApp/>
+      </Provider>
+    </PersistGate>,
+    document.getElementById("root") as HTMLElement
 );
 registerServiceWorker();
 
