@@ -1,14 +1,17 @@
 import { delay } from "redux-saga";
-import {all, call, put, takeEvery} from "redux-saga/effects";
-import { INCREMENT_ENTHUSIASM , ASYNC_INCREMENT_ENTHUSIASM} from "../constants/index";
+import { all, call, put, takeEvery } from "redux-saga/effects";
+import {
+  INCREMENT_ENTHUSIASM,
+  ASYNC_INCREMENT_ENTHUSIASM
+} from "../constants/index";
 
 export function* helloSaga(): IterableIterator<{}> {
   console.log("Hello Sagas!");
 }
 
 export function* incrementAsync(): IterableIterator<{}> {
-    yield call(delay, 5000);
-    yield put({ type: INCREMENT_ENTHUSIASM });
+  yield call(delay, 5000);
+  yield put({ type: INCREMENT_ENTHUSIASM });
 }
 
 export function* watchIncrementAsync(): IterableIterator<{}> {
@@ -16,8 +19,5 @@ export function* watchIncrementAsync(): IterableIterator<{}> {
 }
 
 export default function* rootSaga() {
-  yield all([
-     helloSaga(),
-     watchIncrementAsync()
-  ]);
+  yield all([helloSaga(), watchIncrementAsync()]);
 }

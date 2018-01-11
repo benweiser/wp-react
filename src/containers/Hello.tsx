@@ -1,6 +1,6 @@
 import Hello from "../components/Hello";
 import { connect, Dispatch } from "react-redux";
-import * as actions from "../actions/";
+import { incrementEnthusiasm, decrementEnthusiasm, asyncIncrement, EnthusiasmAction } from "../actions/";
 import { RootStoreState } from "../stores/RootStoreState";
 
 // Change the shape of the object when passing as prop
@@ -15,11 +15,11 @@ import { RootStoreState } from "../stores/RootStoreState";
 
 const mapStateToProps = (state: RootStoreState) => state.enthusiasmReducer;
 
-const mapDispatchToProps = (dispatch: Dispatch<actions.EnthusiasmAction>) => {
+const mapDispatchToProps = (dispatch: Dispatch<EnthusiasmAction>) => {
   return {
-    onIncrement: () => dispatch(actions.incrementEnthusiasm()),
-    onDecrement: () => dispatch(actions.decrementEnthusiasm()),
-    onIncrementAsync: () => dispatch(actions.asyncIncrement())
+    onIncrement: () => dispatch(incrementEnthusiasm()),
+    onDecrement: () => dispatch(decrementEnthusiasm()),
+    onIncrementAsync: () => dispatch(asyncIncrement())
   };
 };
 

@@ -41,6 +41,11 @@
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts, tsx}",
+      "!<rootDir>/node_modules/",
+      "!src/@types/**/*.d.ts"
     ]
   },
   "devDependencies": {
