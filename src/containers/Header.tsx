@@ -19,10 +19,12 @@ class Header extends React.Component {
 const StyledHeader = styled.header`
   background: #343434;
   padding: 8px;
+
   > div {
     display: grid;
     max-width: 1280px;
     margin: 0 auto;
+
     > * {
       grid-row: 1;
     }

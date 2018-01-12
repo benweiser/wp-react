@@ -5,8 +5,6 @@
   "dependencies": {
     "axios": "^0.17.1",
     "core-js": "^2.5.3",
-    "husky": "^0.14.3",
-    "lint-staged": "^6.0.0",
     "localforage": "^1.5.5",
     "lodash": "^4.17.4",
     "prettier": "^1.9.2",
@@ -36,7 +34,8 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom --setupFiles=raf/polyfill --setupTestFrameworkScriptFile=./setupTests.ts",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "lint:css": "stylelint './src/**/*.tsx'"
   },
   "jest": {
     "snapshotSerializers": [
@@ -73,11 +72,15 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.0",
+    "lint-staged": "^6.0.0",
     "react-perf-devtool": "^3.0.2",
     "redux-devtools": "^3.4.1",
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
-    "styled-components-stylefmt": "^0.1.4",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.2.1",
     "typesafe-actions": "^1.1.0"
   }
 }
