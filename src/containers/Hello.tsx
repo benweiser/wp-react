@@ -1,7 +1,10 @@
 import Hello from "../components/Hello";
 import { connect, Dispatch } from "react-redux";
 import {
-  incrementEnthusiasm, decrementEnthusiasm, asyncIncrement, EnthusiasmAction,
+  incrementEnthusiasm,
+  decrementEnthusiasm,
+  asyncIncrement,
+  EnthusiasmAction,
   requestApiData
 } from "../actions/";
 import { RootStoreState } from "../stores/RootStoreState";

@@ -26,7 +26,10 @@ export const requestApiData = (): RequestAPIData => ({
   type: REQUEST_API_DATA
 });
 
-export const receiveApiData = (data: any) => ({ type: RECEIVE_API_DATA, data });
+export const receiveApiData = (data: RECEIVE_API_DATA) => ({
+  type: RECEIVE_API_DATA,
+  data
+});
 
 export type EnthusiasmAction =
   | IncrementEnthusiasm
