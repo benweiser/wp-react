@@ -1,9 +1,8 @@
 import { DECREMENT_ENTHUSIASM, INCREMENT_ENTHUSIASM } from "../constants/index";
 import { EnthusiasmAction } from "../actions/index";
 import { EnthusiasmState } from "../stores/EnthusiasmState";
-import { PostsReducer } from "./PostsReducer";
 
-export const enthusiasmReducer = (
+export const PostsReducer = (
   state: EnthusiasmState = { languageName: "Typescript", enthusiasmLevel: 2 },
   action: EnthusiasmAction
 ): EnthusiasmState => {
@@ -18,9 +17,4 @@ export const enthusiasmReducer = (
     default:
       return state;
   }
-};
-
-export const rootReducer = {
-  enthusiasmReducer,
-  PostsReducer
 };

@@ -7,30 +7,33 @@ export interface HelloProps {
   onIncrement?: () => void;
   onDecrement?: () => void;
   onIncrementAsync?: () => void;
+  requestApiData?: () => void;
 }
 
 const Hello = ({
-                 languageName,
-                 enthusiasmLevel = 1,
-                 onIncrement,
-                 onDecrement,
-                 onIncrementAsync
-               }: HelloProps) => {
+  languageName,
+  enthusiasmLevel = 1,
+  onIncrement,
+  onDecrement,
+  onIncrementAsync,
+  requestApiData
+}: HelloProps) => {
   if (enthusiasmLevel <= 0) {
     throw new Error("You could be a little more enthusiastic");
   }
 
   return (
-      <div className="hello">
-        <div>
-          <StyledButton onClick={onDecrement}>-</StyledButton>
-          <StyledButton onClick={onIncrement}>+</StyledButton>
-          <StyledButton onClick={onIncrementAsync}>Async Action</StyledButton>
-        </div>
-        <h2 className="greeting">
-          Hello {languageName + getExclamationMarks(enthusiasmLevel)}
-        </h2>
+    <div className="hello">
+      <div>
+        <StyledButton onClick={onDecrement}>-</StyledButton>
+        <StyledButton onClick={onIncrement}>+</StyledButton>
+        <StyledButton onClick={onIncrementAsync}>Async Action</StyledButton>
+        <StyledButton onClick={requestApiData}>Get async data</StyledButton>
       </div>
+      <h2 className="greeting">
+        Hello {languageName + getExclamationMarks(enthusiasmLevel)}
+      </h2>
+    </div>
   );
 };
 
