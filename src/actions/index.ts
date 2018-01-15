@@ -1,33 +1,47 @@
-import * as constants from "../constants";
+import {
+  ASYNC_INCREMENT_ENTHUSIASM,
+  DECREMENT_ENTHUSIASM,
+  INCREMENT_ENTHUSIASM,
+  RECEIVE_API_DATA,
+  REQUEST_API_DATA
+} from "../constants/index";
 
 export interface IncrementEnthusiasm {
-  type: constants.INCREMENT_ENTHUSIASM;
+  type: INCREMENT_ENTHUSIASM;
 }
 
 export interface DecrementEnthusiasm {
-  type: constants.DECREMENT_ENTHUSIASM;
+  type: DECREMENT_ENTHUSIASM;
 }
 
 export interface IncrementAsync {
-  type: constants.ASYNC_INCREMENT_ENTHUSIASM;
+  type: ASYNC_INCREMENT_ENTHUSIASM;
 }
 
-export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm | IncrementAsync;
+export interface RequestAPIData {
+  type: REQUEST_API_DATA;
+}
 
-export const incrementEnthusiasm = (): IncrementEnthusiasm => {
-  return {
-    type: constants.INCREMENT_ENTHUSIASM
-  };
-};
+export const requestApiData = (): RequestAPIData => ({
+  type: REQUEST_API_DATA
+});
 
-export const decrementEnthusiasm = (): DecrementEnthusiasm => {
-  return {
-    type: constants.DECREMENT_ENTHUSIASM
-  };
-};
+export const receiveApiData = (data: any) => ({ type: RECEIVE_API_DATA, data });
 
-export const asyncIncrement = (): IncrementAsync => {
-  return {
-    type: constants.ASYNC_INCREMENT_ENTHUSIASM
-  };
-};
+export type EnthusiasmAction =
+  | IncrementEnthusiasm
+  | DecrementEnthusiasm
+  | IncrementAsync
+  | RequestAPIData;
+
+export const incrementEnthusiasm = (): IncrementEnthusiasm => ({
+  type: INCREMENT_ENTHUSIASM
+});
+
+export const decrementEnthusiasm = (): DecrementEnthusiasm => ({
+  type: DECREMENT_ENTHUSIASM
+});
+
+export const asyncIncrement = (): IncrementAsync => ({
+  type: ASYNC_INCREMENT_ENTHUSIASM
+});

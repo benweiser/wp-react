@@ -55,16 +55,13 @@ const reducer = persistCombineReducers(config, rootReducer);
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middleware = applyMiddleware(
-    sagaMiddleware,
-    createLogger()
-);
+const middleware = applyMiddleware(sagaMiddleware, createLogger());
 
 const store = createStore(
-    reducer,
-    undefined,
-    // initialState,
-    composeWithDevTools(compose(middleware))
+  reducer,
+  undefined,
+  // initialState,
+  composeWithDevTools(compose(middleware))
 );
 const persistor = persistStore(store);
 
@@ -79,12 +76,12 @@ sagaMiddleware.run(rootSaga);
 // const unsubscribe = store.subscribe(() => console.log(store.getState()));
 
 ReactDOM.render(
-    <PersistGate persistor={persistor}>
-      <Provider store={store}>
-        <StyledApp/>
-      </Provider>
-    </PersistGate>,
-    document.getElementById("root") as HTMLElement
+  <PersistGate persistor={persistor}>
+    <Provider store={store}>
+      <StyledApp />
+    </Provider>
+  </PersistGate>,
+  document.getElementById("root") as HTMLElement
 );
 registerServiceWorker();
 
