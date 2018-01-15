@@ -22,11 +22,14 @@ export interface RequestAPIData {
   type: REQUEST_API_DATA;
 }
 
-export const requestApiData = (): RequestAPIData => ({
+export const requestAPIData = (): RequestAPIData => ({
   type: REQUEST_API_DATA
 });
 
-export const receiveApiData = (data: any) => ({ type: RECEIVE_API_DATA, data });
+export const receiveAPIData = (data: RECEIVE_API_DATA) => ({
+  type: RECEIVE_API_DATA,
+  data
+});
 
 export type EnthusiasmAction =
   | IncrementEnthusiasm

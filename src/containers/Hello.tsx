@@ -1,8 +1,11 @@
 import Hello from "../components/Hello";
 import { connect, Dispatch } from "react-redux";
 import {
-  incrementEnthusiasm, decrementEnthusiasm, asyncIncrement, EnthusiasmAction,
-  requestApiData
+  incrementEnthusiasm,
+  decrementEnthusiasm,
+  asyncIncrement,
+  EnthusiasmAction,
+  requestAPIData
 } from "../actions/";
 import { RootStoreState } from "../stores/RootStoreState";
 
@@ -23,7 +26,7 @@ const mapDispatchToProps = (dispatch: Dispatch<EnthusiasmAction>) => {
     onIncrement: () => dispatch(incrementEnthusiasm()),
     onDecrement: () => dispatch(decrementEnthusiasm()),
     onIncrementAsync: () => dispatch(asyncIncrement()),
-    requestApiData: () => dispatch(requestApiData())
+    requestApiData: () => dispatch(requestAPIData())
   };
 };
 

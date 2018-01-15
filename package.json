@@ -81,6 +81,7 @@
     "stylelint-config-standard": "^18.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.2.1",
+    "tslint-immutable": "^4.5.0",
     "typesafe-actions": "^1.1.0"
   }
 }
