@@ -5,7 +5,7 @@ import {
   decrementEnthusiasm,
   asyncIncrement,
   EnthusiasmAction,
-  requestApiData
+  requestAPIData
 } from "../actions/";
 import { RootStoreState } from "../stores/RootStoreState";
 
@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch: Dispatch<EnthusiasmAction>) => {
     onIncrement: () => dispatch(incrementEnthusiasm()),
     onDecrement: () => dispatch(decrementEnthusiasm()),
     onIncrementAsync: () => dispatch(asyncIncrement()),
-    requestApiData: () => dispatch(requestApiData())
+    requestApiData: () => dispatch(requestAPIData())
   };
 };
 

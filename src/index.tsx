@@ -6,10 +6,10 @@ import * as ReactDOM from "react-dom";
 import registerServiceWorker from "./registerServiceWorker";
 import "./index.css";
 import { default as StyledApp } from "./App";
-import { applyMiddleware, compose, createStore, StoreEnhancer } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import { rootReducer } from "./reducers/index";
 import { Provider } from "react-redux";
-import storage from "redux-persist/es/storage";
+import * as localForage from "localforage";
 import { persistCombineReducers, persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/es/integration/react";
 import { createLogger } from "redux-logger";
@@ -24,21 +24,6 @@ if (process.env.NODE_ENV !== "production") {
   registerObserver();
 }
 
-export interface CustomWindow extends Window {
-  __REDUX_DEVTOOLS_EXTENSION__: () => StoreEnhancer<RootStoreState>;
-}
-
-/*
-export const store = createStore<RootState>(
-  enthusiasm,
-  {
-    enthusiasmLevel: 1,
-    languageName: "TypeScript"
-  },
-  (window as CustomWindow).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as CustomWindow).__REDUX_DEVTOOLS_EXTENSION__()
-);
-*/
 export const initialState: RootStoreState = {
   enthusiasmReducer: {
     enthusiasmLevel: 2,
@@ -48,7 +33,7 @@ export const initialState: RootStoreState = {
 
 const config: PersistConfig = {
   key: "primary",
-  storage
+  storage: localForage
 };
 
 const reducer = persistCombineReducers(config, rootReducer);
@@ -67,14 +52,6 @@ const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 
-// const action = (type: any) => configureStore().store.dispatch({type});
-
-// console.log(store.getState());
-
-// Every time the state changes, log it
-// Note that subscribe() returns a function for unregistering the listener
-// const unsubscribe = store.subscribe(() => console.log(store.getState()));
-
 ReactDOM.render(
   <PersistGate persistor={persistor}>
     <Provider store={store}>
@@ -84,5 +61,3 @@ ReactDOM.render(
   document.getElementById("root") as HTMLElement
 );
 registerServiceWorker();
-
-// unsubscribe();
