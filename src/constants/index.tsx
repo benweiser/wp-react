@@ -13,4 +13,4 @@ export type REQUEST_API_DATA = typeof REQUEST_API_DATA;
 export const RECEIVE_API_DATA = "RECEIVE_API_DATA";
 export type RECEIVE_API_DATA = typeof RECEIVE_API_DATA;
 
-export const BASE_URI = "https://benweiser.com/wp-json/wp/v2/";
+export const BASE_URI: string = "https://benweiser.com/wp-json/wp/v2/";

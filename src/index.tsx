@@ -28,6 +28,9 @@ export const initialState: RootStoreState = {
   enthusiasmReducer: {
     enthusiasmLevel: 2,
     languageName: "Java"
+  },
+  posts: {
+    posts: undefined
   }
 };
 
