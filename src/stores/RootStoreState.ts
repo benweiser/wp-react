@@ -4,6 +4,6 @@ import { PostsState } from "./PostsState";
 
 export type RootStoreState = {
   readonly enthusiasmReducer: EnthusiasmState;
-  readonly posts: PostsState;
+  readonly PostsReducer: PostsState;
   readonly _persist?: PersistState;
 };
