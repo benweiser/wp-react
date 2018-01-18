@@ -30,11 +30,16 @@ const AsyncComponent = (opts: AsyncLoader) => {
   });
 };
 
-const AsyncBlogPage = AsyncComponent({
+/*const AsyncBlogPage = AsyncComponent({
   loader: () => import("./containers/BlogPage/BlogPage")
-});
+});*/
+
 const AsyncTests = AsyncComponent({
   loader: () => import("./components/Tests")
+});
+
+const AsyncPostsPage = AsyncComponent({
+  loader: () => import("./containers/PostsPage")
 });
 
 class App extends React.Component<AppProps, {}> {
@@ -47,7 +52,7 @@ class App extends React.Component<AppProps, {}> {
           <main>
             <Switch>
               <Route exact={true} path="/" component={Logo} />
-              <Route path="/blog" component={AsyncBlogPage} />
+              <Route path="/blog" component={AsyncPostsPage} />
               <Route path="/test" component={AsyncTests} />
               <Route component={NotFoundPage} />
             </Switch>

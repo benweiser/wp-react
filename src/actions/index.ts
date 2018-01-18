@@ -1,9 +1,7 @@
 import {
   ASYNC_INCREMENT_ENTHUSIASM,
   DECREMENT_ENTHUSIASM,
-  INCREMENT_ENTHUSIASM,
-  RECEIVE_API_DATA,
-  REQUEST_API_DATA
+  INCREMENT_ENTHUSIASM
 } from "../constants/index";
 
 export interface IncrementEnthusiasm {
@@ -18,24 +16,10 @@ export interface IncrementAsync {
   type: ASYNC_INCREMENT_ENTHUSIASM;
 }
 
-export interface RequestAPIData {
-  type: REQUEST_API_DATA;
-}
-
-export const requestAPIData = (): RequestAPIData => ({
-  type: REQUEST_API_DATA
-});
-
-export const receiveAPIData = (data: RECEIVE_API_DATA) => ({
-  type: RECEIVE_API_DATA,
-  data
-});
-
 export type EnthusiasmAction =
   | IncrementEnthusiasm
   | DecrementEnthusiasm
-  | IncrementAsync
-  | RequestAPIData;
+  | IncrementAsync;
 
 export const incrementEnthusiasm = (): IncrementEnthusiasm => ({
   type: INCREMENT_ENTHUSIASM

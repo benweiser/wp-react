@@ -1,7 +1,7 @@
-import { receiveAPIData } from "../actions/index";
 import { call, put, takeLatest } from "redux-saga/effects";
 import { REQUEST_API_DATA } from "../constants/index";
 import makeRequest from "./RequestData";
+import { receiveAPIData } from "../actions/PostsActions";
 
 function* getApiData() {
   try {

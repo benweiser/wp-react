@@ -1,19 +1,16 @@
-import { DECREMENT_ENTHUSIASM, INCREMENT_ENTHUSIASM } from "../constants/index";
-import { EnthusiasmAction } from "../actions/index";
-import { EnthusiasmState } from "../stores/EnthusiasmState";
+import { RECEIVE_API_DATA, REQUEST_API_DATA } from "../constants/index";
+import { PostsState } from "../stores/PostsState";
+import { PostsAction } from "../actions/PostsActions";
 
 export const PostsReducer = (
-  state: EnthusiasmState = { languageName: "Typescript", enthusiasmLevel: 2 },
-  action: EnthusiasmAction
-): EnthusiasmState => {
+  state: PostsState = { posts: {}, isFetching: false },
+  action: PostsAction
+): PostsState => {
   switch (action.type) {
-    case INCREMENT_ENTHUSIASM:
-      return { ...state, enthusiasmLevel: state.enthusiasmLevel + 1 };
-    case DECREMENT_ENTHUSIASM:
-      return {
-        ...state,
-        enthusiasmLevel: Math.max(1, state.enthusiasmLevel - 1)
-      };
+    case REQUEST_API_DATA:
+      return { ...state, isFetching: true };
+    case RECEIVE_API_DATA:
+      return { ...state, posts: action.data, isFetching: false };
     default:
       return state;
   }

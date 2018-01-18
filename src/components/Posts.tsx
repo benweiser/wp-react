@@ -10,7 +10,7 @@ interface PostsProps {
 
 const Posts: React.SFC<PostsProps> = ({ posts }: PostsProps): JSX.Element => {
   const { title, excerpt, better_featured_image, link } = posts;
-  // console.log("posts", posts);
+  console.log("posts", posts);
   return (
     <StyledPost>
       <StyledThumbnail

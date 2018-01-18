@@ -9,7 +9,7 @@ import { PostItem } from "../../interfaces/PostItem";
 
 interface PostsProps {}
 
-export interface PostsState {
+interface PostsState {
   isLoaded: boolean;
   posts: Post[];
 }

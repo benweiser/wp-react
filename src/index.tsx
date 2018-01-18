@@ -28,6 +28,10 @@ export const initialState: RootStoreState = {
   enthusiasmReducer: {
     enthusiasmLevel: 2,
     languageName: "Java"
+  },
+  PostsReducer: {
+    posts: undefined,
+    isFetching: false
   }
 };
 
@@ -42,7 +46,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middleware = applyMiddleware(sagaMiddleware, createLogger());
 
-const store = createStore(
+export const store = createStore(
   reducer,
   undefined,
   // initialState,
