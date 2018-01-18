@@ -20,7 +20,6 @@ interface PostsProps {
 interface PostsState {}
 
 class PostsPageContainer extends React.Component<PostsProps, PostsState> {
-
   constructor(props: PostsProps) {
     super(props);
   }
