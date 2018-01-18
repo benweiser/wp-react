@@ -1,4 +1,5 @@
 export type PostsState = {
-  readonly posts: any;
+  readonly posts: {} | undefined;
+  readonly isFetching: boolean;
   readonly type?: any;
 };

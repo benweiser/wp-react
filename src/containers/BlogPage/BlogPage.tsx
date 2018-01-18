@@ -42,9 +42,9 @@ class BlogPage extends React.Component<PostsProps, PostsState> {
       <StyledPage>
         {isLoaded ? (
           [...posts].map((post, index) => <Posts key={index} posts={post} />)
-        ) : (
+      ) : (
           <ReactLoading type={"bubbles"} color={"#ccc"} />
-        )}
+      )}
       </StyledPage>
     );
   }
