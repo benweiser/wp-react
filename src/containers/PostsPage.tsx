@@ -1,13 +1,13 @@
 import * as React from "react";
-import { RootStoreState } from "../stores/RootStoreState";
+import { RootStoreState } from "../redux/stores/RootStoreState";
 import { connect, Dispatch } from "react-redux";
 import {
   PostsAction,
   requestAPIData,
   RequestAPIData
-} from "../actions/PostsActions";
+} from "../redux/actions/PostsActions";
 import styled from "styled-components";
-import Post from "../models/Post";
+import Post from "../lib/models/Post";
 import ReactLoading from "react-loading";
 import Posts from "../components/Posts";
 

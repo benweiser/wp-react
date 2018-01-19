@@ -7,23 +7,25 @@ import registerServiceWorker from "./registerServiceWorker";
 import "./index.css";
 import { default as StyledApp } from "./App";
 import { applyMiddleware, compose, createStore } from "redux";
-import { rootReducer } from "./reducers/index";
+import { rootReducer } from "./redux/reducers/";
 import { Provider } from "react-redux";
 import * as localForage from "localforage";
 import { persistCombineReducers, persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/es/integration/react";
 import { createLogger } from "redux-logger";
 import { PersistConfig } from "redux-persist/es/types";
-import { RootStoreState } from "./stores/RootStoreState";
+import { RootStoreState } from "./redux/stores/RootStoreState";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import createSagaMiddleware from "redux-saga";
-import { default as rootSaga } from "./sagas/index";
+import { default as rootSaga } from "./redux/sagas/index";
+import { developmentScripts } from "./developmentScripts";
 
-if (process.env.NODE_ENV !== "production") {
-  const registerObserver = require("react-perf-devtool");
-  registerObserver();
-}
+developmentScripts();
 
+/**
+ * The initial state of all stores in the root reducer
+ * @type {{enthusiasmReducer: {enthusiasmLevel: number; languageName: string}; PostsReducer: {posts: any; isFetching: boolean}}}
+ */
 export const initialState: RootStoreState = {
   enthusiasmReducer: {
     enthusiasmLevel: 2,
@@ -35,15 +37,31 @@ export const initialState: RootStoreState = {
   }
 };
 
+/**
+ * Redux persist configuration
+ * @type {{key: string; storage}}
+ */
 const config: PersistConfig = {
   key: "primary",
   storage: localForage
 };
 
+/**
+ * A wrapper around combineReducers that combines our root reducer into a persistent state
+ * @type {Reducer<any & "redux-persist/es/types".PersistedState>}
+ */
 const reducer = persistCombineReducers(config, rootReducer);
 
+/**
+ * Creates the saga middleware needed to inform redux of our sagas
+ * @type {SagaMiddleware<Object>}
+ */
 const sagaMiddleware = createSagaMiddleware();
 
+/**
+ * Apply the middleware to make it available to our redux store
+ * @type {GenericStoreEnhancer}
+ */
 const middleware = applyMiddleware(sagaMiddleware, createLogger());
 
 export const store = createStore(
@@ -52,16 +70,37 @@ export const store = createStore(
   // initialState,
   composeWithDevTools(compose(middleware))
 );
-const persistor = persistStore(store);
+/**
+ * Create a persistent store
+ * @type {"redux-persist/es/types".Persistor}
+ */
+const persistentStore = persistStore(store);
 
+/**
+ * Run our saga middleware on the root saga
+ */
 sagaMiddleware.run(rootSaga);
 
-ReactDOM.render(
-  <PersistGate persistor={persistor}>
-    <Provider store={store}>
-      <StyledApp />
-    </Provider>
-  </PersistGate>,
-  document.getElementById("root") as HTMLElement
-);
+/**
+ * Returns our entire application
+ * @returns {Element}
+ */
+export const renderApp = () => {
+  return ReactDOM.render(
+    <PersistGate persistor={persistentStore}>
+      <Provider store={store}>
+        <StyledApp />
+      </Provider>
+    </PersistGate>,
+    document.getElementById("root") as HTMLElement
+  );
+};
+
+/**
+ * Render our application
+ */
+renderApp();
+/**
+ * Register our service workers
+ */
 registerServiceWorker();

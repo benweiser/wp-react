@@ -2,7 +2,7 @@ import {
   ASYNC_INCREMENT_ENTHUSIASM,
   DECREMENT_ENTHUSIASM,
   INCREMENT_ENTHUSIASM
-} from "../constants/index";
+} from "../action-creators/index";
 
 export interface IncrementEnthusiasm {
   type: INCREMENT_ENTHUSIASM;

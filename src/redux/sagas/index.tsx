@@ -3,7 +3,7 @@ import { all, call, put, takeEvery } from "redux-saga/effects";
 import {
   INCREMENT_ENTHUSIASM,
   ASYNC_INCREMENT_ENTHUSIASM
-} from "../constants/index";
+} from "../action-creators/index";
 import watchAPIData from "./PostsSaga";
 
 export function* helloSaga(): IterableIterator<{}> {
