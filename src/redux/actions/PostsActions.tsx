@@ -1,4 +1,4 @@
-import { RECEIVE_API_DATA, REQUEST_API_DATA } from "../constants/index";
+import { RECEIVE_API_DATA, REQUEST_API_DATA } from "../action-creators/index";
 
 export interface RequestAPIData {
   type: REQUEST_API_DATA;

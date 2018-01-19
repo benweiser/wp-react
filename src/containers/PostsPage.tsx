@@ -1,13 +1,13 @@
 import * as React from "react";
-import { RootStoreState } from "../stores/RootStoreState";
+import { RootStoreState } from "../redux/stores/RootStoreState";
 import { connect, Dispatch } from "react-redux";
 import {
   PostsAction,
   requestAPIData,
   RequestAPIData
-} from "../actions/PostsActions";
+} from "../redux/actions/PostsActions";
 import styled from "styled-components";
-import Post from "../models/Post";
+import Post from "../lib/models/Post";
 import ReactLoading from "react-loading";
 import Posts from "../components/Posts";
 
@@ -47,6 +47,7 @@ const StyledPage = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 32px 16px 0;
+  border: 20px solid green;
 `;
 
 const mapStateToProps = (state: RootStoreState) => state.PostsReducer;

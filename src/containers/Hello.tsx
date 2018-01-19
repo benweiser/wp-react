@@ -5,8 +5,8 @@ import {
   decrementEnthusiasm,
   asyncIncrement,
   EnthusiasmAction
-} from "../actions/";
-import { RootStoreState } from "../stores/RootStoreState";
+} from "../redux/actions/";
+import { RootStoreState } from "../redux/stores/RootStoreState";
 
 // Change the shape of the object when passing as prop
 /*export function mapStateToProps({ enthusiasmReducer: { enthusiasmLevel, languageName } }: RootState) {

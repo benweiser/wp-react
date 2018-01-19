@@ -1,7 +1,7 @@
 import * as React from "react";
 import axios from "axios";
-import Post from "../models/Post";
-import { PostItem } from "../interfaces/PostItem";
+import Post from "../lib/models/Post";
+import { PostItem } from "../lib/interfaces/PostItem";
 
 interface PostsProps {
   id: number;

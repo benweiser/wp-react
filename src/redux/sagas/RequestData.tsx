@@ -1,8 +1,7 @@
 import axios from "axios";
-import Post from "../models/Post";
-import { PostItem } from "../interfaces/PostItem";
-import { BASE_URI } from "../constants/index";
-
+import Post from "../../lib/models/Post";
+import { PostItem } from "../../lib/interfaces/PostItem";
+import { BASE_URI } from "../../lib/constants";
 const makeRequest = async (query: string = "posts") => {
   try {
     return await axios
