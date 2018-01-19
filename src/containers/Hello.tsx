@@ -20,13 +20,11 @@ import { RootStoreState } from "../redux/stores/RootStoreState";
 
 const mapStateToProps = (state: RootStoreState) => state.enthusiasmReducer;
 
-const mapDispatchToProps = (
-  dispatch: Dispatch<EnthusiasmAction>
-) => {
+const mapDispatchToProps = (dispatch: Dispatch<EnthusiasmAction>) => {
   return {
     onIncrement: () => dispatch(incrementEnthusiasm()),
     onDecrement: () => dispatch(decrementEnthusiasm()),
-    onIncrementAsync: () => dispatch(asyncIncrement()),
+    onIncrementAsync: () => dispatch(asyncIncrement())
   };
 };
 

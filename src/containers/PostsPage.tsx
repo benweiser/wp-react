@@ -47,7 +47,6 @@ const StyledPage = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 32px 16px 0;
-  border: 20px solid green;
 `;
 
 const mapStateToProps = (state: RootStoreState) => state.PostsReducer;
