@@ -18,29 +18,9 @@ import { RootStoreState } from "./redux/stores/RootStoreState";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import createSagaMiddleware from "redux-saga";
 import { default as rootSaga } from "./redux/sagas/index";
+import { developmentScripts } from "./developmentScripts";
 
-/**
- * Any functions that should not run in the production build go here
- */
-if (process.env.NODE_ENV !== "production") {
-  const registerObserver = require("react-perf-devtool");
-  registerObserver();
-
-  if (module.hot) {
-    module.hot.accept("./redux/reducers/", () => {
-      store.replaceReducer(rootReducer as any);
-    });
-  }
-
-  /**
-   * Allow for hot module replacement
-   */
-  if (module.hot) {
-    module.hot.accept("./App", () => {
-      renderApp();
-    });
-  }
-}
+developmentScripts();
 
 /**
  * The initial state of all stores in the root reducer
@@ -94,7 +74,7 @@ export const store = createStore(
  * Create a persistent store
  * @type {"redux-persist/es/types".Persistor}
  */
-const persistor = persistStore(store);
+const persistentStore = persistStore(store);
 
 /**
  * Run our saga middleware on the root saga
@@ -105,9 +85,9 @@ sagaMiddleware.run(rootSaga);
  * Returns our entire application
  * @returns {Element}
  */
-const renderApp = () => {
+export const renderApp = () => {
   return ReactDOM.render(
-    <PersistGate persistor={persistor}>
+    <PersistGate persistor={persistentStore}>
       <Provider store={store}>
         <StyledApp />
       </Provider>
