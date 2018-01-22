@@ -1,5 +1,4 @@
 describe("Posts Container", () => {
-
   it("should receive not request api data if it's already been received", () => {
     return undefined;
   });
