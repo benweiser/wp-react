@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { REQUEST_API_DATA } from "../action-creators/index";
+import { REQUEST_API_DATA } from "../action-types/index";
 import makeRequest from "./RequestData";
 import { receiveAPIData } from "../actions/PostsActions";
 

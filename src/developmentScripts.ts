@@ -6,10 +6,12 @@ import { renderApp, store } from "./index";
  */
 export const developmentScripts = () => {
   if (process.env.NODE_ENV !== "production") {
+    console.log("This is the development environment");
     const registerObserver = require("react-perf-devtool");
     registerObserver();
 
     if (module.hot) {
+      console.log("Hot module reloading supported");
       module.hot.accept("./redux/reducers/", () => {
         store.replaceReducer(rootReducer as any);
       });

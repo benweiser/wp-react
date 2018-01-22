@@ -1,4 +1,4 @@
-import { RECEIVE_API_DATA, REQUEST_API_DATA } from "../action-creators/index";
+import { RECEIVE_API_DATA, REQUEST_API_DATA } from "../action-types/index";
 import { PostsState } from "../stores/PostsState";
 import { PostsAction } from "../actions/PostsActions";
 

@@ -1,15 +1,15 @@
 import * as React from "react";
-import { RootStoreState } from "../redux/stores/RootStoreState";
+import { RootStoreState } from "../../redux/stores/RootStoreState";
 import { connect, Dispatch } from "react-redux";
 import {
   PostsAction,
   requestAPIData,
   RequestAPIData
-} from "../redux/actions/PostsActions";
+} from "../../redux/actions/PostsActions";
 import styled from "styled-components";
-import Post from "../lib/models/Post";
+import Post from "../../lib/models/Post";
 import ReactLoading from "react-loading";
-import Posts from "../components/Posts";
+import Posts from "../../components/Posts";
 
 interface PostsProps {
   posts: Post[];
@@ -19,7 +19,7 @@ interface PostsProps {
 
 interface PostsState {}
 
-class PostsPageContainer extends React.Component<PostsProps, PostsState> {
+class PostsPage extends React.Component<PostsProps, PostsState> {
   constructor(props: PostsProps) {
     super(props);
   }
@@ -47,6 +47,7 @@ const StyledPage = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 32px 16px 0;
+  border: 1px solid red;
 `;
 
 const mapStateToProps = (state: RootStoreState) => state.PostsReducer;
@@ -57,4 +58,4 @@ const mapDispatchToProps = (dispatch: Dispatch<PostsAction>) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostsPageContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PostsPage);

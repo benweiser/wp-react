@@ -1,4 +1,5 @@
-import { RECEIVE_API_DATA, REQUEST_API_DATA } from "../action-creators/index";
+import { RECEIVE_API_DATA, REQUEST_API_DATA } from "../action-types/index";
+import { PostItem } from "../../lib/interfaces/PostItem";
 
 export interface RequestAPIData {
   type: REQUEST_API_DATA;
@@ -6,7 +7,7 @@ export interface RequestAPIData {
 
 export interface ReceiveAPIData {
   type: RECEIVE_API_DATA;
-  data: {};
+  data: PostItem;
 }
 
 export const requestAPIData = (): RequestAPIData => ({

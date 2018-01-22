@@ -1,7 +1,7 @@
 import {
   DECREMENT_ENTHUSIASM,
   INCREMENT_ENTHUSIASM
-} from "../action-creators/index";
+} from "../action-types/index";
 import { EnthusiasmAction } from "../actions/index";
 import { EnthusiasmState } from "../stores/EnthusiasmState";
 import { PostsReducer } from "./PostsReducer";
