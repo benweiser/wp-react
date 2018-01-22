@@ -18,10 +18,32 @@ import { RootStoreState } from "./redux/stores/RootStoreState";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import createSagaMiddleware from "redux-saga";
 import { default as rootSaga } from "./redux/sagas/index";
-import { developmentScripts } from "./developmentScripts";
+
+export const developmentScripts = () => {
+  if (process.env.NODE_ENV !== "production") {
+    console.log("This is the development environment");
+    const registerObserver = require("react-perf-devtool");
+    registerObserver();
+
+    if (module.hot) {
+      console.log("Hot module reloading supported");
+      module.hot.accept("./redux/reducers/", () => {
+        store.replaceReducer(rootReducer as any);
+      });
+    }
+
+    /**
+     * Allow for hot module replacement
+     */
+    if (module.hot) {
+      module.hot.accept("./App", () => {
+        renderApp();
+      });
+    }
+  }
+};
 
 developmentScripts();
-
 /**
  * The initial state of all stores in the root reducer
  * @type {{enthusiasmReducer: {enthusiasmLevel: number; languageName: string}; PostsReducer: {posts: any; isFetching: boolean}}}
