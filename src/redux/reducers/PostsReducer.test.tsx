@@ -20,12 +20,15 @@ it("should handle REQUEST_API_DATA", () => {
 it("should handle RECEIVE_API_DATA", () => {
   const action: ReceiveAPIData = {
     type: RECEIVE_API_DATA,
-    data: {} as PostItem
+    payload: {} as PostItem
   };
   expect(
-    PostsReducer({} as PostsState, { type: RECEIVE_API_DATA, data: action.data })
+    PostsReducer({} as PostsState, {
+      type: RECEIVE_API_DATA,
+      payload: action.payload
+    })
   ).toEqual({
-    payload: action.data,
+    payload: action.payload,
     isFetching: false
   });
 });

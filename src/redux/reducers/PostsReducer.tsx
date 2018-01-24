@@ -3,14 +3,14 @@ import { PostsState } from "../stores/PostsState";
 import { PostsAction } from "../actions/PostsActions";
 
 export const PostsReducer = (
-  state: PostsState = { posts: {}, isFetching: false },
+  state: PostsState = { payload: {}, isFetching: false },
   action: PostsAction
 ): PostsState => {
   switch (action.type) {
     case REQUEST_API_DATA:
       return { ...state, isFetching: true };
     case RECEIVE_API_DATA:
-      return { ...state, posts: action.data, isFetching: false };
+      return { ...state, payload: action.payload, isFetching: false };
     default:
       return state;
   }

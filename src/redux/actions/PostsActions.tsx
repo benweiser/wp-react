@@ -7,7 +7,7 @@ export interface RequestAPIData {
 
 export interface ReceiveAPIData {
   type: RECEIVE_API_DATA;
-  data: PostItem;
+  payload: PostItem;
 }
 
 export const requestAPIData = (): RequestAPIData => ({
@@ -16,7 +16,7 @@ export const requestAPIData = (): RequestAPIData => ({
 
 export const receiveAPIData = (data: ReceiveAPIData) => ({
   type: RECEIVE_API_DATA,
-  data
+  payload: data
 });
 
 export type PostsAction = RequestAPIData | ReceiveAPIData;
