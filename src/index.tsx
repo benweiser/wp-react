@@ -54,7 +54,7 @@ export const initialState: RootStoreState = {
     languageName: "Java"
   },
   PostsReducer: {
-    posts: undefined,
+    payload: undefined,
     isFetching: false
   }
 };

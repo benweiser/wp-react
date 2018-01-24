@@ -1,7 +1,7 @@
 import * as React from "react";
 import Post from "../lib/models/Post";
 import styled from "styled-components";
-import Image from "./Image";
+import Image from "./Image/Image";
 import Link from "./Link/Link";
 
 interface PostsProps {
@@ -10,7 +10,6 @@ interface PostsProps {
 
 const Posts: React.SFC<PostsProps> = ({ posts }: PostsProps): JSX.Element => {
   const { title, excerpt, better_featured_image, link } = posts;
-  console.log("posts", posts);
   return (
     <StyledPost>
       <StyledThumbnail

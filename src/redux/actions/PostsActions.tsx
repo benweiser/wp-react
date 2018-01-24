@@ -14,7 +14,7 @@ export const requestAPIData = (): RequestAPIData => ({
   type: REQUEST_API_DATA
 });
 
-export const receiveAPIData = (data: RECEIVE_API_DATA) => ({
+export const receiveAPIData = (data: ReceiveAPIData) => ({
   type: RECEIVE_API_DATA,
   data
 });

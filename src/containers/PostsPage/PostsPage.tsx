@@ -12,7 +12,7 @@ import ReactLoading from "react-loading";
 import Posts from "../../components/Posts";
 
 interface PostsProps {
-  posts: Post[];
+  payload: Post[];
   isFetching: boolean;
   requestApiData: () => RequestAPIData;
 }
@@ -24,17 +24,17 @@ class PostsPage extends React.Component<PostsProps, PostsState> {
     super(props);
   }
   componentDidMount() {
-    if (!this.props.posts.length) {
+    if (!this.props.payload.length) {
       this.props.requestApiData();
     }
   }
 
   render(): JSX.Element {
-    const { posts, isFetching } = this.props;
+    const { payload, isFetching } = this.props;
     return (
       <StyledPage>
-        {!isFetching && posts.length ? (
-          [...posts].map((post, index) => <Posts key={index} posts={post} />)
+        {!isFetching && payload.length ? (
+          [...payload].map((post, index) => <Posts key={index} posts={post} />)
         ) : (
           <ReactLoading type={"bubbles"} color={"#ccc"} />
         )}
@@ -47,7 +47,6 @@ const StyledPage = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 32px 16px 0;
-  border: 1px solid red;
 `;
 
 const mapStateToProps = (state: RootStoreState) => state.PostsReducer;
