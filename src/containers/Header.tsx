@@ -1,5 +1,5 @@
 import * as React from "react";
-import Logo from "../components/Logo";
+import Logo from "../components/Logo/Logo";
 import Navigation from "../components/Navigation";
 import styled from "styled-components";
 

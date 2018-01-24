@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image component renders correctly 1`] = `
+<div>
+  <LazyLoad
+    height={200}
+    offset={100}
+    once={true}
+    overflow={false}
+    resize={false}
+    scroll={true}
+    unmountIfInvisible={false}
+  >
+    <Img
+      alt="al text"
+      className="bw-img"
+      decode={true}
+      loader={
+        <Loading
+          color="#ccc"
+          delay={1000}
+          height={64}
+          type="bubbles"
+          width={64}
+        />
+      }
+      src={
+        Array [
+          "logo.png",
+          "http://via.placeholder.com/350x350",
+        ]
+      }
+      unloader={false}
+    />
+  </LazyLoad>
+</div>
+`;
