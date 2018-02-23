@@ -12,7 +12,13 @@ it("should return the initial state", () => {
 });
 
 it("should handle REQUEST_API_DATA", () => {
-  expect(PostsReducer({} as PostsState, { type: REQUEST_API_DATA })).toEqual({
+  expect(
+    PostsReducer({} as PostsState, {
+      type: REQUEST_API_DATA,
+      query: "posts",
+      method: "get"
+    })
+  ).toEqual({
     isFetching: true
   });
 });

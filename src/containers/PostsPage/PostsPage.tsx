@@ -10,6 +10,7 @@ import styled from "styled-components";
 import Post from "../../lib/models/Post";
 import ReactLoading from "react-loading";
 import Posts from "../../components/Posts";
+import { APIConstants } from "../../lib/APIConstants";
 
 interface PostsProps {
   payload: Post[];
@@ -53,7 +54,7 @@ const mapStateToProps = (state: RootStoreState) => state.PostsReducer;
 
 const mapDispatchToProps = (dispatch: Dispatch<PostsAction>) => {
   return {
-    requestApiData: () => dispatch(requestAPIData())
+    requestApiData: () => dispatch(requestAPIData("get", APIConstants.PAGES))
   };
 };
 
