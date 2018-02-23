@@ -1,5 +1,5 @@
 export class APIConstants {
-    static readonly BASE_URI: string = "https://benweiser.com/wp-json/wp/v2/";
+  static readonly BASE_URI: string = "https://benweiser.com/wp-json/wp/v2/";
   /**
    * WordPress blog posts endpoint
    * @type {string}
@@ -9,5 +9,5 @@ export class APIConstants {
    * WordPress blog page endpoint
    * @type {string}
    */
-    static readonly PAGES: string = "pages";
+  static readonly PAGES: string = "pages";
 }
