@@ -1,14 +1,13 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { REQUEST_API_DATA } from "../action-types/index";
 import makeRequest from "./RequestData";
-import { receiveAPIData } from "../actions/PostsActions";
+import { receiveAPIData, RequestAPIData } from "../actions/PostsActions";
 
-function* getApiData() {
+function* getApiData(action: RequestAPIData) {
   try {
     // do api call
-    const data = yield call(makeRequest);
+    const data = yield call(makeRequest, action.query, action.method);
     yield put(receiveAPIData(data));
-    // console.log("saga data", data);
   } catch (e) {
     console.log(e);
   }

@@ -1,12 +1,17 @@
 import axios from "axios";
 import Post from "../../lib/models/Post";
 import { PostItem } from "../../lib/interfaces/PostItem";
-import { BASE_URI } from "../../lib/constants";
-const makeRequest = async (query: string = "posts") => {
+import { APIConstants } from "../../lib/APIConstants";
+const makeRequest = async (method: string = "get", query: string = APIConstants.POSTS) => {
   try {
-    return await axios
-      .get(`${BASE_URI}${query}`)
-      .then(response => response.data.map((post: PostItem) => new Post(post)));
+    return await axios({
+      method: method,
+      url: `${APIConstants.BASE_URI}${query}`,
+      data: {}
+    }).then(response => response.data.map((post: PostItem) => new Post(post)));
+/*    return await axios
+      .get(`${APIConstants.BASE_URI}${query}`)
+      .then(response => response.data.map((post: PostItem) => new Post(post)));*/
   } catch (e) {
     console.log(e);
   }

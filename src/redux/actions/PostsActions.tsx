@@ -3,6 +3,8 @@ import { PostItem } from "../../lib/interfaces/PostItem";
 
 export interface RequestAPIData {
   type: REQUEST_API_DATA;
+  query: string;
+  method: string;
 }
 
 export interface ReceiveAPIData {
@@ -10,8 +12,13 @@ export interface ReceiveAPIData {
   payload: PostItem;
 }
 
-export const requestAPIData = (): RequestAPIData => ({
-  type: REQUEST_API_DATA
+export const requestAPIData = (
+  query: string,
+  method: string
+): RequestAPIData => ({
+  type: REQUEST_API_DATA,
+  query,
+  method
 });
 
 export const receiveAPIData = (data: ReceiveAPIData) => ({
