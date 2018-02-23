@@ -12,9 +12,6 @@ const makeRequest = async (
       url: `${APIConstants.BASE_URI}${query}`,
       data: {}
     }).then(response => response.data.map((post: PostItem) => new Post(post)));
-    /*    return await axios
-      .get(`${APIConstants.BASE_URI}${query}`)
-      .then(response => response.data.map((post: PostItem) => new Post(post)));*/
   } catch (e) {
     console.log(e);
   }
