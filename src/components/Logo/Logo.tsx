@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-const logo = require("../images/logo.png");
+const logo = require("../../assets/images/logo.png");
 
 const Logo: React.SFC<{}> = (): JSX.Element => {
   return (

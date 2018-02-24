@@ -1,8 +1,8 @@
 export interface PostItem {
   id: number;
-  better_featured_image?: {
-    source_url?: string;
-    alt_text?: string;
+  better_featured_image: {
+    source_url: string;
+    alt_text: string;
   };
   content: {
     protected: boolean;

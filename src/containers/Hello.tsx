@@ -1,20 +1,33 @@
 import Hello from "../components/Hello";
 import { connect, Dispatch } from "react-redux";
-import * as actions from "../actions/";
-import { StoreState } from "../@types/redux-store/index";
+import {
+  incrementEnthusiasm,
+  decrementEnthusiasm,
+  asyncIncrement,
+  EnthusiasmAction
+} from "../redux/actions/";
+import { RootStoreState } from "../redux/stores/RootStoreState";
 
-export function mapStateToProps({ enthusiasmLevel, languageName }: StoreState) {
+// Change the shape of the object when passing as prop
+/*export function mapStateToProps({ enthusiasmReducer: { enthusiasmLevel, languageName } }: RootState) {
   return {
-    enthusiasmLevel,
-    name: languageName
+    enthusiasmReducer: {
+      enthusiasmLevel,
+      name: languageName
+    }
   };
-}
+}*/
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.EnthusiasmAction>) {
+const mapStateToProps = (state: RootStoreState) => state.enthusiasmReducer;
+
+const mapDispatchToProps = (dispatch: Dispatch<EnthusiasmAction>) => {
   return {
-    onIncrement: () => dispatch(actions.incrementEnthusiasm()),
-    onDecrement: () => dispatch(actions.decrementEnthusiasm())
+    onIncrement: () => dispatch(incrementEnthusiasm()),
+    onDecrement: () => dispatch(decrementEnthusiasm()),
+    onIncrementAsync: () => dispatch(asyncIncrement())
   };
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Hello as any);
+const HelloContainer = connect(mapStateToProps, mapDispatchToProps)(Hello);
+
+export default HelloContainer;

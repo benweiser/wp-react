@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo component renders correctly 1`] = `
+<div>
+  <styled.img
+    alt="My Logo"
+    src="logo.png"
+  />
+  <span>
+    Ben Weiser
+  </span>
+</div>
+`;
