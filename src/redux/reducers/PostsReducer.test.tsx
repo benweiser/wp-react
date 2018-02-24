@@ -15,8 +15,8 @@ it("should handle REQUEST_API_DATA", () => {
   expect(
     PostsReducer({} as PostsState, {
       type: REQUEST_API_DATA,
-      query: "posts",
-      method: "get"
+      method: "get",
+      query: "posts"
     })
   ).toEqual({
     isFetching: true

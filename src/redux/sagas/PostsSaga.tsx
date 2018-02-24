@@ -6,7 +6,7 @@ import { receiveAPIData, RequestAPIData } from "../actions/PostsActions";
 function* getApiData(action: RequestAPIData) {
   try {
     // do api call
-    const data = yield call(makeRequest, action.query, action.method);
+    const data = yield call(makeRequest, action.method, action.query);
     yield put(receiveAPIData(data));
   } catch (e) {
     console.log(e);

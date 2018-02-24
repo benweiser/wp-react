@@ -1,5 +1,6 @@
 import { RECEIVE_API_DATA, REQUEST_API_DATA } from "../action-types/index";
 import { PostItem } from "../../lib/interfaces/PostItem";
+import { APIConstants } from "../../lib/APIConstants";
 
 export interface RequestAPIData {
   type: REQUEST_API_DATA;
@@ -13,12 +14,12 @@ export interface ReceiveAPIData {
 }
 
 export const requestAPIData = (
-  query: string,
-  method: string
+  method: string = "get",
+  query: string = APIConstants.POSTS
 ): RequestAPIData => ({
   type: REQUEST_API_DATA,
-  query,
-  method
+  method,
+  query
 });
 
 export const receiveAPIData = (data: ReceiveAPIData) => ({
