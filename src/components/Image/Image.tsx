@@ -4,9 +4,9 @@ import Img from "react-image";
 import ReactLoading from "react-loading";
 
 export interface ImageProps {
-  alt: string;
-  src: string;
-  className?: string;
+  readonly alt: string;
+  readonly src: string;
+  readonly className?: string;
 }
 
 const Image: React.SFC<ImageProps> = ({
