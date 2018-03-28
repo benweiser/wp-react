@@ -3,14 +3,14 @@ import { PostItem } from "../../lib/interfaces/PostItem";
 import { APIConstants } from "../../lib/APIConstants";
 
 export interface RequestAPIData {
-  type: REQUEST_API_DATA;
-  query: string;
-  method: string;
+  readonly type: REQUEST_API_DATA;
+  readonly query: string;
+  readonly method: string;
 }
 
 export interface ReceiveAPIData {
-  type: RECEIVE_API_DATA;
-  payload: PostItem;
+  readonly type: RECEIVE_API_DATA;
+  readonly payload: PostItem;
 }
 
 export const requestAPIData = (

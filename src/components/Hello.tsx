@@ -2,11 +2,11 @@ import * as React from "react";
 import styled from "styled-components";
 
 export interface HelloProps {
-  languageName: string;
-  enthusiasmLevel?: number;
-  onIncrement?: () => void;
-  onDecrement?: () => void;
-  onIncrementAsync?: () => void;
+  readonly languageName: string;
+  readonly enthusiasmLevel?: number;
+  readonly onIncrement?: () => void;
+  readonly onDecrement?: () => void;
+  readonly onIncrementAsync?: () => void;
 }
 
 const Hello = ({

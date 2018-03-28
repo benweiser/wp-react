@@ -2,26 +2,26 @@ import * as _ from "lodash";
 import { PostItem } from "../interfaces/PostItem";
 
 export class Post implements PostItem {
-  id: number;
-  better_featured_image: {
-    source_url: string;
-    alt_text: string;
+  readonly id: number;
+  readonly better_featured_image: {
+    readonly source_url: string;
+    readonly alt_text: string;
   };
-  content: {
-    protected: boolean;
-    rendered: string;
+  readonly content: {
+    readonly protected: boolean;
+    readonly rendered: string;
   };
-  date: Date;
-  date_gmt: Date;
-  modified: Date;
-  modified_gmt: Date;
-  title: {
-    rendered: string;
+  readonly date: Date;
+  readonly date_gmt: Date;
+  readonly modified: Date;
+  readonly modified_gmt: Date;
+  readonly title: {
+    readonly rendered: string;
   };
-  excerpt: {
-    rendered: string;
+  readonly excerpt: {
+    readonly rendered: string;
   };
-  link: string;
+  readonly link: string;
 
   constructor(obj: PostItem) {
     if (!_.isEmpty(obj)) {
