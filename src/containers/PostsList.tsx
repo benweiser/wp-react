@@ -40,6 +40,7 @@ class PostsList extends React.Component<PostsProps, PostsState> {
         });
       })
       .then(response => {
+        console.log("response", response);
         this.postItems = [...this.state.posts].map((item, index) => (
           <div key={index}>{item.title.rendered}</div>
         ));

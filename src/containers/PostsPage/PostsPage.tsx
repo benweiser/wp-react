@@ -19,6 +19,12 @@ interface PostsProps {
 
 interface PostsState {}
 
+const StyledPage = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 16px 0;
+`;
+
 class PostsPage extends React.Component<PostsProps, PostsState> {
   constructor(props: PostsProps) {
     super(props);
@@ -42,12 +48,6 @@ class PostsPage extends React.Component<PostsProps, PostsState> {
     );
   }
 }
-
-const StyledPage = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 32px 16px 0;
-`;
 
 const mapStateToProps = (state: RootStoreState) => state.PostsReducer;
 

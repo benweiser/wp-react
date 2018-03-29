@@ -14,6 +14,12 @@ interface PostsState {
   posts: Post[];
 }
 
+const StyledPage = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 16px 0;
+`;
+
 class BlogPage extends React.Component<PostsProps, PostsState> {
   constructor(props: PostsProps) {
     super(props);
@@ -62,11 +68,5 @@ class BlogPage extends React.Component<PostsProps, PostsState> {
     });
   }
 }
-
-const StyledPage = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 32px 16px 0;
-`;
 
 export default BlogPage;
