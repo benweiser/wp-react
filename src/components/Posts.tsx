@@ -5,7 +5,7 @@ import Image from "./Image/Image";
 import Link from "./Link/Link";
 
 interface PostsProps {
-  posts: Post;
+  readonly posts: Post;
 }
 
 const StyledPost = styled.div`

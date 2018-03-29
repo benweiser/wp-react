@@ -11,11 +11,11 @@ import { BrowserRouter } from "react-router-dom";
 const Loadable = require("react-loadable");
 
 interface AppProps {
-  className?: string;
+  readonly className?: string;
 }
 
 interface AsyncLoader {
-  loader: () => Promise<{}>;
+  readonly loader: () => Promise<{}>;
 }
 
 const LoadingComponent = (): JSX.Element => <div>Loading...</div>;

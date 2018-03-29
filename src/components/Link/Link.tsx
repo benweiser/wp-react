@@ -1,9 +1,9 @@
 import * as React from "react";
 
 export interface LinkProps {
-  href: string;
-  linkText: string;
-  target?: string;
+  readonly href: string;
+  readonly linkText: string;
+  readonly target?: string;
 }
 
 const Link: React.SFC<LinkProps> = ({

@@ -12,9 +12,9 @@ import ReactLoading from "react-loading";
 import Posts from "../../components/Posts";
 
 interface PostsProps {
-  payload: Post[];
-  isFetching: boolean;
-  requestApiData: () => RequestAPIData;
+  readonly payload: ReadonlyArray<Post>;
+  readonly isFetching: boolean;
+  readonly requestApiData: () => RequestAPIData;
 }
 
 interface PostsState {}
