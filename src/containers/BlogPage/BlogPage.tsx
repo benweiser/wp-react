@@ -22,7 +22,7 @@ const StyledPage = styled.div`
 
 const initialPostsState = {
   isLoaded: false,
-  posts: [],
+  posts: []
 };
 
 class BlogPage extends React.Component<PostsProps, PostsState> {

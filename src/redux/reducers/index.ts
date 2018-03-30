@@ -1,7 +1,4 @@
-import {
-  DECREMENT_ENTHUSIASM,
-  INCREMENT_ENTHUSIASM
-} from "../action-types";
+import { DECREMENT_ENTHUSIASM, INCREMENT_ENTHUSIASM } from "../action-types";
 import { EnthusiasmAction } from "../actions";
 import { EnthusiasmState } from "../stores/EnthusiasmState";
 import { PostsReducer } from "./PostsReducer";
