@@ -85,6 +85,7 @@ export const developmentScripts = () => {
     if (module.hot) {
       console.log("Hot module reloading supported");
       module.hot.accept("./redux/reducers/", () => {
+        // tslint:disable-next-line
         store.replaceReducer(rootReducer as any);
       });
     }
