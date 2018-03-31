@@ -1,8 +1,8 @@
 import * as React from "react";
 
 export interface EnthusiasmProps {
-  onIncrement?: () => void;
-  onDecrement?: () => void;
+  readonly onIncrement?: () => void;
+  readonly onDecrement?: () => void;
 }
 
 const Enthusiasm: React.SFC<EnthusiasmProps> = ({

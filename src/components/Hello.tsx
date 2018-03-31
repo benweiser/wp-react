@@ -9,12 +9,22 @@ export interface HelloProps {
   readonly onIncrementAsync?: () => void;
 }
 
+const StyledButton = styled.button`
+  padding: 8px 16px;
+  cursor: pointer;
+  width: 120px;
+`;
+
+const getExclamationMarks = (numChars: number): string => {
+  return Array(numChars + 1).join("!");
+};
+
 const Hello = ({
   languageName,
   enthusiasmLevel = 1,
   onIncrement,
   onDecrement,
-  onIncrementAsync,
+  onIncrementAsync
 }: HelloProps) => {
   if (enthusiasmLevel <= 0) {
     throw new Error("You could be a little more enthusiastic");
@@ -35,13 +45,3 @@ const Hello = ({
 };
 
 export default Hello;
-
-const getExclamationMarks = (numChars: number): string => {
-  return Array(numChars + 1).join("!");
-};
-
-const StyledButton = styled.button`
-  padding: 8px 16px;
-  cursor: pointer;
-  width: 120px;
-`;

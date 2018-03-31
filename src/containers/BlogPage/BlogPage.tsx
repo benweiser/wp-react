@@ -10,17 +10,25 @@ import Posts from "../../components/Posts";
 interface PostsProps {}
 
 interface PostsState {
-  isLoaded: boolean;
-  posts: Post[];
+  readonly isLoaded: boolean;
+  readonly posts: ReadonlyArray<Post>;
 }
 
+const StyledPage = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 16px 0;
+`;
+
+const initialPostsState = {
+  isLoaded: false,
+  posts: []
+};
+
 class BlogPage extends React.Component<PostsProps, PostsState> {
+  readonly state: PostsState = initialPostsState;
   constructor(props: PostsProps) {
     super(props);
-    this.state = {
-      isLoaded: false,
-      posts: []
-    };
   }
 
   componentDidMount() {
@@ -30,7 +38,7 @@ class BlogPage extends React.Component<PostsProps, PostsState> {
       } else {
         this.setState({
           isLoaded: true,
-          posts: posts as Post[]
+          posts: posts as ReadonlyArray<Post>
         });
       }
     });
@@ -56,17 +64,11 @@ class BlogPage extends React.Component<PostsProps, PostsState> {
         .then(posts => {
           this.setState({
             isLoaded: true,
-            posts: posts as Post[]
+            posts: posts as ReadonlyArray<Post>
           });
         });
     });
   }
 }
-
-const StyledPage = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 32px 16px 0;
-`;
 
 export default BlogPage;

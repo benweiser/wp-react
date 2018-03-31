@@ -19,34 +19,8 @@ import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import createSagaMiddleware from "redux-saga";
 import { default as rootSaga } from "./redux/sagas/index";
 
-export const developmentScripts = () => {
-  if (process.env.NODE_ENV !== "production") {
-    console.log("This is the development environment");
-    const registerObserver = require("react-perf-devtool");
-    registerObserver();
-
-    if (module.hot) {
-      console.log("Hot module reloading supported");
-      module.hot.accept("./redux/reducers/", () => {
-        store.replaceReducer(rootReducer as any);
-      });
-    }
-
-    /**
-     * Allow for hot module replacement
-     */
-    if (module.hot) {
-      module.hot.accept("./App", () => {
-        renderApp();
-      });
-    }
-  }
-};
-
-developmentScripts();
 /**
  * The initial state of all stores in the root reducer
- * @type {{enthusiasmReducer: {enthusiasmLevel: number; languageName: string}; PostsReducer: {posts: any; isFetching: boolean}}}
  */
 export const initialState: RootStoreState = {
   enthusiasmReducer: {
@@ -61,7 +35,6 @@ export const initialState: RootStoreState = {
 
 /**
  * Redux persist configuration
- * @type {{key: string; storage}}
  */
 const config: PersistConfig = {
   key: "primary",
@@ -103,6 +76,32 @@ const persistentStore = persistStore(store);
  */
 sagaMiddleware.run(rootSaga);
 
+export const developmentScripts = () => {
+  if (process.env.NODE_ENV !== "production") {
+    console.log("This is the development environment");
+    const registerObserver = require("react-perf-devtool");
+    registerObserver();
+
+    if (module.hot) {
+      console.log("Hot module reloading supported");
+      module.hot.accept("./redux/reducers/", () => {
+        // tslint:disable-next-line
+        store.replaceReducer(rootReducer as any);
+      });
+    }
+
+    /**
+     * Allow for hot module replacement
+     */
+    if (module.hot) {
+      module.hot.accept("./App", () => {
+        renderApp();
+      });
+    }
+  }
+};
+
+developmentScripts();
 /**
  * Returns our entire application
  * @returns {Element}

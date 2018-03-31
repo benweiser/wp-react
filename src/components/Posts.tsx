@@ -8,6 +8,22 @@ interface PostsProps {
   readonly posts: Post;
 }
 
+const StyledPost = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin-bottom: 32px;
+`;
+
+const StyledContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+`;
+
+const StyledThumbnail = styled(Image)`
+  max-width: 250px;
+`;
+
 const Posts: React.SFC<PostsProps> = ({ posts }: PostsProps): JSX.Element => {
   const { title, excerpt, better_featured_image, link } = posts;
   return (
@@ -25,21 +41,5 @@ const Posts: React.SFC<PostsProps> = ({ posts }: PostsProps): JSX.Element => {
     </StyledPost>
   );
 };
-
-const StyledPost = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  margin-bottom: 32px;
-`;
-
-const StyledContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: 16px;
-`;
-
-const StyledThumbnail = styled(Image)`
-  max-width: 250px;
-`;
 
 export default Posts;
