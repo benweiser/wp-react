@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint-react", "tslint-immutable"],
+  "extends": ["tslint-react", "tslint-immutable", "tslint-config-prettier"],
   "rules": {
     "align": [true, "parameters", "arguments", "statements"],
     "ban": false,

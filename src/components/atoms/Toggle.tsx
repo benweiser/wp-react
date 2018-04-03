@@ -1,7 +1,7 @@
 import * as React from "react";
 
 interface ListProps {
-  readonly onToggle: (isToggled: boolean) => any;
+  readonly onToggle: (isToggled: boolean) => void;
   readonly render: (props: RenderProps) => JSX.Element;
 }
 
@@ -37,7 +37,10 @@ const MyToggle = ({ isToggled, toggle }: RenderProps) => {
   );
 };
 
-const MyApp = () => {
+/**
+ * Our custom toggle
+ */
+export const MyApp = () => {
   const toggleText = (toggleState: boolean) => {
     return `This button is ${toggleState ? "on" : "off"}`;
   };
@@ -57,12 +60,23 @@ const MyApp = () => {
   );
 };
 
-export default MyApp;
+const MyApper = () => {
+  const toggleText = (toggleState: boolean) =>
+    `This bad mo fo is ${toggleState}`;
+  return (
+    <Toggle
+      onToggle={isToggled => console.log(isToggled)}
+      render={({ isToggled, toggle }) => <div>{toggleText(isToggled)}</div>}
+    />
+  );
+};
+
+export default MyApper;
 
 interface ToggleSwitchProps {
   readonly isToggled: boolean;
   readonly className?: string;
-  readonly onClick: any;
+  readonly onClick: () => void;
 }
 
 const ToggleSwitch = ({
