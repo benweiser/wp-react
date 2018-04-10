@@ -3,21 +3,24 @@ import Post from "../lib/models/Post";
 import styled from "styled-components";
 import Image from "./Image/Image";
 import Link from "./Link/Link";
+import { display, flexDirection, space } from "styled-system";
 
 interface PostsProps {
   readonly posts: Post;
 }
 
 const StyledPost = styled.div`
-  display: grid;
+  ${space};
   grid-template-columns: 1fr 4fr;
-  margin-bottom: 32px;
+  @media (min-width: 40em) {
+    display: grid;
+  }
 `;
 
 const StyledContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: 16px;
+  ${display};
+  ${flexDirection};
+  ${space};
 `;
 
 const StyledThumbnail = styled(Image)`
@@ -27,13 +30,13 @@ const StyledThumbnail = styled(Image)`
 const Posts: React.SFC<PostsProps> = ({ posts }: PostsProps): JSX.Element => {
   const { title, excerpt, better_featured_image, link } = posts;
   return (
-    <StyledPost>
+    <StyledPost p={2}>
       <StyledThumbnail
         src={better_featured_image.source_url}
         alt={better_featured_image.alt_text}
         className={"bw-img"}
       />
-      <StyledContent>
+      <StyledContent mb={2} pl={3} display="flex" flexDirection="column">
         <h1>{title.rendered}</h1>
         <div dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
         <Link href={link} linkText={"Learn More"} />

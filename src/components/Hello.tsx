@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-
+import { S } from "../styles/utils/Styles";
 export interface HelloProps {
   readonly languageName: string;
   readonly enthusiasmLevel?: number;
@@ -12,7 +12,11 @@ export interface HelloProps {
 const StyledButton = styled.button`
   padding: 8px 16px;
   cursor: pointer;
-  width: 120px;
+  margin-right: ${S.V_MD};
+`;
+
+const StyledHello = styled.div`
+  padding: ${S.V_XL} ${S.V_MD};
 `;
 
 const getExclamationMarks = (numChars: number): string => {
@@ -31,7 +35,7 @@ const Hello = ({
   }
 
   return (
-    <div className="hello">
+    <StyledHello>
       <div>
         <StyledButton onClick={onDecrement}>-</StyledButton>
         <StyledButton onClick={onIncrement}>+</StyledButton>
@@ -40,7 +44,7 @@ const Hello = ({
       <h2 className="greeting">
         Hello {languageName + getExclamationMarks(enthusiasmLevel)}
       </h2>
-    </div>
+    </StyledHello>
   );
 };
 
