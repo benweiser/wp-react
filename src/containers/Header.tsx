@@ -1,3 +1,4 @@
+import MyApp from "../components/atoms/Toggle";
 import * as React from "react";
 import Logo from "../components/Logo/Logo";
 import Navigation from "../components/Navigation";
@@ -25,6 +26,7 @@ class Header extends React.Component {
         <div>
           <Logo />
           <Navigation />
+          <MyApp />
         </div>
       </StyledHeader>
     );
