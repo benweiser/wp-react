@@ -3,6 +3,13 @@ import styled from "styled-components";
 
 const logo = require("../../assets/images/logo.png");
 
+const StyledImage = styled.img`
+  border-radius: 100px;
+  max-width: 75px;
+  padding: 4px;
+  border: 1px solid #ccc;
+`;
+
 const Logo: React.SFC<{}> = (): JSX.Element => {
   return (
     <div>
@@ -11,12 +18,5 @@ const Logo: React.SFC<{}> = (): JSX.Element => {
     </div>
   );
 };
-
-const StyledImage = styled.img`
-  border-radius: 100px;
-  max-width: 75px;
-  padding: 4px;
-  border: 1px solid #ccc;
-`;
 
 export default Logo;
