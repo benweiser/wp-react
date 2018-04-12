@@ -1,6 +1,3 @@
-import * as styledComponents from "styled-components";
-import { ThemedStyledComponentsModule } from "styled-components";
-
 export interface ColorScheme {
   readonly primary: string;
   readonly secondary: string;
@@ -46,14 +43,3 @@ export const theme: ThemeInterface = {
   breakpoints,
   fontSizes
 };
-
-const {
-  default: styled,
-  css,
-  injectGlobal,
-  keyframes,
-  ThemeProvider
-} = styledComponents as ThemedStyledComponentsModule<ThemeInterface>;
-
-export { css, injectGlobal, keyframes, ThemeProvider };
-export default styled;

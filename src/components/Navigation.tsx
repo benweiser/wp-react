@@ -1,4 +1,4 @@
-import styled from "../styles/theme";
+import styled from "../styles/styled-components";
 import * as React from "react";
 
 import { space, alignItems, display } from "styled-system";

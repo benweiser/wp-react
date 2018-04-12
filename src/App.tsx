@@ -4,10 +4,11 @@ import { Route, Switch } from "react-router";
 import Header from "./containers/Header";
 import "typeface-roboto";
 import { ThemeProvider } from "styled-components";
-import { default as styled, theme } from "./styles/theme";
+import { default as styled } from "./styles/styled-components";
 import Logo from "./components/Logo/Logo";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import { BrowserRouter } from "react-router-dom";
+import { theme } from "./styles/theme";
 // import * as Loadable from "react-loadable";
 const Loadable = require("react-loadable");
 

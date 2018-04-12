@@ -1,7 +1,8 @@
 import * as React from "react";
 import Logo from "../components/Logo/Logo";
 import StyledNavigation from "../components/Navigation";
-import styled from "../styles/theme";
+import styled from "../styles/styled-components";
+
 const StyledHeader = styled.header`
   background: #343434;
   padding: 8px;

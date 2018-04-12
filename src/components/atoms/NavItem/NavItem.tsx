@@ -1,7 +1,7 @@
 import { ThemeInterface } from "../../../styles/theme";
 import * as React from "react";
 import { Link } from "react-router-dom";
-import styled from "../../../styles/theme";
+import styled from "../../../styles/styled-components";
 
 interface NavItemProps {
   className?: string;

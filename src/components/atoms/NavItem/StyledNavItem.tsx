@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { display, space } from "styled-system";
-import styled from "../../../styles/theme";
+import styled from "styled-components";
 
 export const StyledNavItem = styled(Link)`
   ${space};
