@@ -1,4 +1,5 @@
 {
     "editor.formatOnSave": true,
-    "prettier.stylelintIntegration": true
+    "prettier.stylelintIntegration": true,
+    "typescript.tsdk": "node_modules/typescript/lib"
 }

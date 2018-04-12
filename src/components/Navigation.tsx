@@ -1,30 +1,33 @@
+import styled from "../styles/styled-components";
 import * as React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
 
-const StyledNavigation = styled.nav`
-  display: flex;
-  align-items: center;
+import { space, alignItems, display } from "styled-system";
+import { StyledNavItem } from "./atoms/NavItem/StyledNavItem";
 
-  a {
-    padding: 16px;
-    font-size: 18px;
-    text-decoration: none;
-    color: #eeeaaa;
+interface StyledNavProps {
+  className?: string;
+}
 
-    :hover {
-      color: #fff;
-    }
-  }
+const Navigation: React.StatelessComponent<StyledNavProps> = ({
+  className
+}: StyledNavProps) => (
+  <nav className={className}>
+    <StyledNavItem p={3} display="block" to="/test">
+      Test
+    </StyledNavItem>
+    <StyledNavItem p={3} display="block" to="/blog">
+      Blog
+    </StyledNavItem>
+    <StyledNavItem p={3} display="block" to="/blog">
+      Blog
+    </StyledNavItem>
+  </nav>
+);
+
+const StyledNavigation = styled(Navigation)`
+  ${space};
+  ${display};
+  ${alignItems};
 `;
 
-const Navigation: React.SFC<{}> = (): JSX.Element => {
-  return (
-    <StyledNavigation>
-      <Link to="/test">Test</Link>
-      <Link to="/blog">Blog</Link>
-    </StyledNavigation>
-  );
-};
-
-export default Navigation;
+export default StyledNavigation;

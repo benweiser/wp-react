@@ -5,7 +5,6 @@
   "dependencies": {
     "axios": "^0.17.1",
     "core-js": "^2.5.3",
-    "jsdom-quokka-plugin": "^1.0.11",
     "localforage": "^1.5.5",
     "lodash": "^4.17.4",
     "prettier": "^1.9.2",
@@ -23,26 +22,25 @@
     "redux-persist": "^5.4.0",
     "redux-saga": "^0.16.0",
     "styled-components": "^2.2.4",
-    "ts-node": "^5.0.1",
+    "styled-components-ts": "^0.0.8",
+    "styled-normalize": "^4.0.0",
+    "styled-system": "^2.2.1",
     "typeface-roboto": "^0.0.45"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,json}": [
-      "prettier --double-quote --write"
-    ]
+    "src/**/*.{ts,tsx,json}": ["prettier --double-quote --write"]
   },
   "scripts": {
     "precommit": "lint-staged",
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom --setupFiles=raf/polyfill --setupTestFrameworkScriptFile=./setupTests.ts",
+    "test":
+      "react-scripts-ts test --env=jsdom --setupFiles=raf/polyfill --setupTestFrameworkScriptFile=./setupTests.ts",
     "eject": "react-scripts-ts eject",
     "lint:css": "stylelint './src/**/*.tsx'"
   },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "collectCoverageFrom": [
       "src/**/*.{ts, tsx}",
       "!<rootDir>/node_modules/",
@@ -57,6 +55,7 @@
     "@types/jest": "^22.0.1",
     "@types/localforage": "^0.0.34",
     "@types/lodash": "^4.14.91",
+    "@types/material-ui": "^0.21.1",
     "@types/node": "^8.5.2",
     "@types/react": "^16.0.30",
     "@types/react-dom": "^16.0.3",
@@ -76,7 +75,9 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-redux": "^0.1.7",
     "enzyme-to-json": "^3.3.0",
+    "jsdom-quokka-plugin": "^1.0.11",
     "lint-staged": "^6.0.0",
+    "material-ui": "^1.0.0-beta.40",
     "react-perf-devtool": "^3.0.2",
     "redux-devtools": "^3.4.1",
     "redux-devtools-extension": "^2.13.2",
@@ -86,8 +87,11 @@
     "stylelint-config-standard": "^18.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.2.1",
+    "ts-node": "^5.0.1",
     "tslint-config-prettier": "^1.10.0",
     "tslint-immutable": "^4.5.0",
-    "typesafe-actions": "^1.1.0"
+    "tslint-react": "^3.5.1",
+    "typesafe-actions": "^1.1.0",
+    "typescript-styled-plugin": "^0.6.0"
   }
 }

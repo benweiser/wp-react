@@ -1,4 +1,4 @@
-import { default as MyApper } from "./atoms/Toggle";
+import CETButton from "./atoms/CETButton";
 import * as React from "react";
 import Hello from "../containers/Hello";
 
@@ -7,7 +7,7 @@ const Tests: React.SFC<{}> = (): JSX.Element => {
     <div>
       <Hello />
       Hello theressss. This is some content.
-      <MyApper />
+      <CETButton />
     </div>
   );
 };

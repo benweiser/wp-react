@@ -1,8 +1,7 @@
-import MyApp from "../components/atoms/Toggle";
 import * as React from "react";
 import Logo from "../components/Logo/Logo";
-import Navigation from "../components/Navigation";
-import styled from "styled-components";
+import StyledNavigation from "../components/Navigation";
+import styled from "../styles/styled-components";
 
 const StyledHeader = styled.header`
   background: #343434;
@@ -25,8 +24,7 @@ class Header extends React.Component {
       <StyledHeader>
         <div>
           <Logo />
-          <Navigation />
-          <MyApp />
+          <StyledNavigation display="flex" alignItems="center" />
         </div>
       </StyledHeader>
     );

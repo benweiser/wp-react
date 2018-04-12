@@ -1,34 +1,35 @@
+import * as localForage from "localforage";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import "core-js/es6/map";
 import "core-js/es6/set";
 import "raf/polyfill";
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import createSagaMiddleware from "redux-saga";
 import registerServiceWorker from "./registerServiceWorker";
 import { default as StyledApp } from "./App";
 import { applyMiddleware, compose, createStore } from "redux";
 import { rootReducer } from "./redux/reducers/";
-import { Provider } from "react-redux";
-import * as localForage from "localforage";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+import { createLogger } from "redux-logger";
 import { persistCombineReducers, persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/es/integration/react";
-import { createLogger } from "redux-logger";
 import { PersistConfig } from "redux-persist/es/types";
+import { Provider } from "react-redux";
 import { RootStoreState } from "./redux/stores/RootStoreState";
-import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
-import createSagaMiddleware from "redux-saga";
 import { default as rootSaga } from "./redux/sagas/index";
+import baseStyles from "./styles/global/index";
 
 /**
  * The initial state of all stores in the root reducer
  */
 export const initialState: RootStoreState = {
+  PostsReducer: {
+    isFetching: false,
+    payload: undefined
+  },
   enthusiasmReducer: {
     enthusiasmLevel: 2,
     languageName: "Java"
-  },
-  PostsReducer: {
-    payload: undefined,
-    isFetching: false
   }
 };
 
@@ -106,6 +107,7 @@ developmentScripts();
  * @returns {Element}
  */
 export const renderApp = () => {
+  baseStyles();
   return ReactDOM.render(
     <PersistGate persistor={persistentStore}>
       <Provider store={store}>
