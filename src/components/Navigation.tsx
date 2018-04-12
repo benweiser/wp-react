@@ -15,13 +15,7 @@ const Navigation: React.StatelessComponent<StyledNavProps> = ({
   return (
     <nav className={className}>
       {ROUTES.map((route, index) => (
-        <StyledNavItem
-          p={3}
-          display="block"
-          alignItems="center"
-          key={index}
-          to={`/${route.path}`}
-        >
+        <StyledNavItem p={3} key={index} to={`/${route.path}`}>
           {route.name}
         </StyledNavItem>
       ))}
@@ -31,8 +25,8 @@ const Navigation: React.StatelessComponent<StyledNavProps> = ({
 
 const StyledNavigation = styled(Navigation)`
   ${space};
-  ${display};
   ${alignItems};
+  ${display};
 `;
 
 export default StyledNavigation;
