@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export interface NotFoundPageProps {
-  location: string;
+  readonly location: string;
 }
 
 const NotFoundPage: React.SFC<NotFoundPageProps> = (): JSX.Element => {

@@ -12,12 +12,18 @@ import ReactLoading from "react-loading";
 import Posts from "../../components/Posts";
 
 interface PostsProps {
-  payload: Post[];
-  isFetching: boolean;
-  requestApiData: () => RequestAPIData;
+  readonly payload: ReadonlyArray<Post>;
+  readonly isFetching: boolean;
+  readonly requestApiData: () => RequestAPIData;
 }
 
 interface PostsState {}
+
+const StyledPage = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 16px 0;
+`;
 
 class PostsPage extends React.Component<PostsProps, PostsState> {
   constructor(props: PostsProps) {
@@ -42,12 +48,6 @@ class PostsPage extends React.Component<PostsProps, PostsState> {
     );
   }
 }
-
-const StyledPage = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 32px 16px 0;
-`;
 
 const mapStateToProps = (state: RootStoreState) => state.PostsReducer;
 

@@ -1,20 +1,7 @@
 import * as React from "react";
 import Logo from "../components/Logo/Logo";
-import Navigation from "../components/Navigation";
-import styled from "styled-components";
-
-class Header extends React.Component {
-  render() {
-    return (
-      <StyledHeader>
-        <div>
-          <Logo />
-          <Navigation />
-        </div>
-      </StyledHeader>
-    );
-  }
-}
+import StyledNavigation from "../components/Navigation";
+import styled from "../styles/styled-components";
 
 const StyledHeader = styled.header`
   background: #343434;
@@ -30,5 +17,18 @@ const StyledHeader = styled.header`
     }
   }
 `;
+
+class Header extends React.Component {
+  render() {
+    return (
+      <StyledHeader>
+        <div>
+          <Logo />
+          <StyledNavigation display="flex" alignItems="center" />
+        </div>
+      </StyledHeader>
+    );
+  }
+}
 
 export default Header;

@@ -1,67 +1,40 @@
+import * as localForage from "localforage";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import "core-js/es6/map";
 import "core-js/es6/set";
 import "raf/polyfill";
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import createSagaMiddleware from "redux-saga";
 import registerServiceWorker from "./registerServiceWorker";
-import "./index.css";
 import { default as StyledApp } from "./App";
 import { applyMiddleware, compose, createStore } from "redux";
 import { rootReducer } from "./redux/reducers/";
-import { Provider } from "react-redux";
-import * as localForage from "localforage";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+import { createLogger } from "redux-logger";
 import { persistCombineReducers, persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/es/integration/react";
-import { createLogger } from "redux-logger";
 import { PersistConfig } from "redux-persist/es/types";
+import { Provider } from "react-redux";
 import { RootStoreState } from "./redux/stores/RootStoreState";
-import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
-import createSagaMiddleware from "redux-saga";
 import { default as rootSaga } from "./redux/sagas/index";
+import baseStyles from "./styles/global/index";
 
-export const developmentScripts = () => {
-  if (process.env.NODE_ENV !== "production") {
-    console.log("This is the development environment");
-    const registerObserver = require("react-perf-devtool");
-    registerObserver();
-
-    if (module.hot) {
-      console.log("Hot module reloading supported");
-      module.hot.accept("./redux/reducers/", () => {
-        store.replaceReducer(rootReducer as any);
-      });
-    }
-
-    /**
-     * Allow for hot module replacement
-     */
-    if (module.hot) {
-      module.hot.accept("./App", () => {
-        renderApp();
-      });
-    }
-  }
-};
-
-developmentScripts();
 /**
  * The initial state of all stores in the root reducer
- * @type {{enthusiasmReducer: {enthusiasmLevel: number; languageName: string}; PostsReducer: {posts: any; isFetching: boolean}}}
  */
 export const initialState: RootStoreState = {
+  PostsReducer: {
+    isFetching: false,
+    payload: undefined
+  },
   enthusiasmReducer: {
     enthusiasmLevel: 2,
     languageName: "Java"
-  },
-  PostsReducer: {
-    payload: undefined,
-    isFetching: false
   }
 };
 
 /**
  * Redux persist configuration
- * @type {{key: string; storage}}
  */
 const config: PersistConfig = {
   key: "primary",
@@ -103,11 +76,38 @@ const persistentStore = persistStore(store);
  */
 sagaMiddleware.run(rootSaga);
 
+export const developmentScripts = () => {
+  if (process.env.NODE_ENV !== "production") {
+    console.log("This is the development environment");
+    const registerObserver = require("react-perf-devtool");
+    registerObserver();
+
+    if (module.hot) {
+      console.log("Hot module reloading supported");
+      module.hot.accept("./redux/reducers/", () => {
+        // tslint:disable-next-line
+        store.replaceReducer(rootReducer as any);
+      });
+    }
+
+    /**
+     * Allow for hot module replacement
+     */
+    if (module.hot) {
+      module.hot.accept("./App", () => {
+        renderApp();
+      });
+    }
+  }
+};
+
+developmentScripts();
 /**
  * Returns our entire application
  * @returns {Element}
  */
 export const renderApp = () => {
+  baseStyles();
   return ReactDOM.render(
     <PersistGate persistor={persistentStore}>
       <Provider store={store}>

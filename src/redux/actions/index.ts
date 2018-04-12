@@ -5,15 +5,15 @@ import {
 } from "../action-types/index";
 
 export interface IncrementEnthusiasm {
-  type: INCREMENT_ENTHUSIASM;
+  readonly type: INCREMENT_ENTHUSIASM;
 }
 
 export interface DecrementEnthusiasm {
-  type: DECREMENT_ENTHUSIASM;
+  readonly type: DECREMENT_ENTHUSIASM;
 }
 
 export interface IncrementAsync {
-  type: ASYNC_INCREMENT_ENTHUSIASM;
+  readonly type: ASYNC_INCREMENT_ENTHUSIASM;
 }
 
 export type EnthusiasmAction =
