@@ -28,19 +28,22 @@
     "typeface-roboto": "^0.0.45"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,json}": ["prettier --double-quote --write"]
+    "src/**/*.{ts,tsx,json}": [
+      "prettier --double-quote --write"
+    ]
   },
   "scripts": {
     "precommit": "lint-staged",
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "test":
-      "react-scripts-ts test --env=jsdom --setupFiles=raf/polyfill --setupTestFrameworkScriptFile=./setupTests.ts",
+    "test": "react-scripts-ts test --env=jsdom --setupFiles=raf/polyfill --setupTestFrameworkScriptFile=./setupTests.ts",
     "eject": "react-scripts-ts eject",
     "lint:css": "stylelint './src/**/*.tsx'"
   },
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "collectCoverageFrom": [
       "src/**/*.{ts, tsx}",
       "!<rootDir>/node_modules/",
@@ -78,6 +81,7 @@
     "jsdom-quokka-plugin": "^1.0.11",
     "lint-staged": "^6.0.0",
     "material-ui": "^1.0.0-beta.40",
+    "react-a11y": "^1.0.0",
     "react-perf-devtool": "^3.0.2",
     "redux-devtools": "^3.4.1",
     "redux-devtools-extension": "^2.13.2",
