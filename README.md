@@ -6,6 +6,8 @@ You can find the most recent version of this guide [here](https://github.com/fac
 ## Table of Contents
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/benweiser/wp-react.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/benweiser/wp-react.svg?branch=develop)](https://travis-ci.org/benweiser/wp-react)
+[![Build Status](https://travis-ci.org/benweiser/wp-react.svg?branch=master)](https://travis-ci.org/benweiser/wp-react)
 
 - [Updating to New Releases](#updating-to-new-releases)
 - [Sending Feedback](#sending-feedback)
