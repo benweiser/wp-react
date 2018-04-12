@@ -79,7 +79,24 @@ sagaMiddleware.run(rootSaga);
 export const developmentScripts = () => {
   if (process.env.NODE_ENV !== "production") {
     console.log("This is the development environment");
+    const a11y = require("react-a11y").default;
     const registerObserver = require("react-perf-devtool");
+
+    a11y(React, ReactDOM, {
+      rules: {
+        "avoid-positive-tabindex": "warn",
+        "hidden-uses-tabindex": "warn",
+        "img-uses-alt": "warn",
+        "mouse-events-map-to-key-events": "warn",
+        "no-unsupported-elements-use-aria": "warn",
+        "onclick-uses-tabindex": "warn",
+        "redundant-alt": ["warn", ["image"]],
+        "label-uses-for": "warn",
+        "tabindex-uses-button": "warn",
+        "valid-aria-role": "warn"
+      }
+    });
+
     registerObserver();
 
     if (module.hot) {
