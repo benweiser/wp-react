@@ -15,15 +15,7 @@ exports[`Image component renders correctly 1`] = `
       alt="al text"
       className="bw-img"
       decode={true}
-      loader={
-        <Loading
-          color="#ccc"
-          delay={1000}
-          height={64}
-          type="bubbles"
-          width={64}
-        />
-      }
+      loader={<Unknown />}
       src={
         Array [
           "logo.png",
