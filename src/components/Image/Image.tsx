@@ -1,7 +1,7 @@
 import * as React from "react";
 import LazyLoad from "react-lazyload";
 import Img from "react-image";
-import ReactLoading from "react-loading";
+import { Loader } from "../atoms/Loader/Loader";
 
 export interface ImageProps {
   readonly alt: string;
@@ -21,7 +21,7 @@ const Image: React.SFC<ImageProps> = ({
           className={className}
           src={[src, "http://via.placeholder.com/350x350"]}
           alt={alt}
-          loader={<ReactLoading type={"bubbles"} color={"#ccc"} />}
+          loader={<Loader />}
         />
       </LazyLoad>
     </div>

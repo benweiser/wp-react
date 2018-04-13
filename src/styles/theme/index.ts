@@ -33,9 +33,9 @@ export const fontSizes: ReadonlyArray<number> = [
 export const breakpoints: ReadonlyArray<string> = ["680px", "900px", "1200px"];
 
 export interface ThemeInterface {
-  colors: ColorScheme;
-  breakpoints: ReadonlyArray<string>;
-  fontSizes: ReadonlyArray<number>;
+  readonly colors: ColorScheme;
+  readonly breakpoints: ReadonlyArray<string>;
+  readonly fontSizes: ReadonlyArray<number>;
 }
 
 export const theme: ThemeInterface = {
