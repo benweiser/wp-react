@@ -11,7 +11,7 @@ interface NavItemProps {
   children?: React.ReactChild;
 }
 
-export const NavItem: React.StatelessComponent<NavItemProps> = ({
+export const NavItem: React.SFC<NavItemProps> = ({
   className,
   path,
   linkText,
