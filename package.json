@@ -22,7 +22,7 @@
     "redux-persist": "^5.4.0",
     "redux-saga": "^0.16.0",
     "styled-components": "^2.2.4",
-    "styled-components-ts": "^0.0.8",
+    "styled-components-ts": "^0.0.12",
     "styled-normalize": "^4.0.0",
     "styled-system": "^2.2.1",
     "typeface-roboto": "^0.0.45"
