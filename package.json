@@ -91,7 +91,7 @@
     "tslint-config-prettier": "^1.10.0",
     "tslint-immutable": "^4.5.0",
     "tslint-react": "^3.5.1",
-    "typesafe-actions": "^1.1.0",
+    "typesafe-actions": "^2.0.4",
     "typescript-styled-plugin": "^0.6.0"
   }
 }
