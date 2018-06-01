@@ -56,7 +56,7 @@
     "@types/localforage": "^0.0.34",
     "@types/lodash": "^4.14.91",
     "@types/material-ui": "^0.21.1",
-    "@types/node": "^8.5.2",
+    "@types/node": "^10.1.4",
     "@types/react": "^16.0.30",
     "@types/react-dom": "^16.0.3",
     "@types/react-lazyload": "^2.2.4",
